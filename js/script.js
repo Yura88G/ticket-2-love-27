@@ -38,24 +38,40 @@ fadeInElements.forEach(el => observer.observe(el));
 
 // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
 // Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
+const fadeInElements = document.querySelectorAll('.fade-in');
+const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+fadeInElements.forEach(el => observer.observe(el));
+
+// === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
+// Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 
 if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
-        // Додаємо невелику затримку для стабілізації
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Попереджаємо конфлікт із зовнішніми кліками
         setTimeout(() => {
             const isOpen = mainNav.classList.toggle('is-open');
             navToggle.classList.toggle('is-open', isOpen);
             navToggle.setAttribute('aria-expanded', isOpen);
 
-            // Закриття при повторному кліку або кліку поза меню
+            // Управління закриттям
             if (isOpen) {
                 document.addEventListener('click', closeMenuOnOutsideClick);
             } else {
                 document.removeEventListener('click', closeMenuOnOutsideClick);
             }
-        }, 50); // Затримка 50 мс
+        }, 50); // Затримка для стабілізації
     });
 
     // Функція для закриття меню при кліку поза ним
@@ -388,5 +404,6 @@ setTimeout(() => {
 });
 
 // =
+
 
 
