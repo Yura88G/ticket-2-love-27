@@ -19,25 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // =========================================================================
     // 2. БАЗОВА ФУНКЦІОНАЛЬНІСТЬ (Анімації, Меню, Лічильник, Скролінг)
-    // =========================================================================
-    
-    // === ЛОГІКА АНІМАЦІЇ FADE-IN ПРИ СКРОЛІНГУ ===
-    const fadeInElements = document.querySelectorAll('.fade-in');
-const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-fadeInElements.forEach(el => observer.observe(el));
-
-// === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
-// Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
+// === ЛОГІКА АНІМАЦІЇ FADE-IN ПРИ СКРОЛІНГУ ===
+// Ця секція управляє появою елементів із класом .fade-in при скролінгу
 const fadeInElements = document.querySelectorAll('.fade-in');
 const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
 
@@ -61,7 +44,8 @@ if (navToggle && mainNav) {
     navToggle.addEventListener('click', (e) => {
         e.stopPropagation(); // Попереджаємо конфлікт із зовнішніми кліками
         setTimeout(() => {
-            const isOpen = mainNav.classList.toggle('is-open');
+            const isOpen = !mainNav.classList.contains('is-open'); // Перевірка стану
+            mainNav.classList.toggle('is-open', isOpen);
             navToggle.classList.toggle('is-open', isOpen);
             navToggle.setAttribute('aria-expanded', isOpen);
 
@@ -85,17 +69,16 @@ if (navToggle && mainNav) {
     }
 }
 
-    // =========================================================================
-    // 💥 НОВА СЕКЦІЯ: ЛОГІКА WOW INTRO АНІМАЦІЇ 💥
-    // Керує послідовним запуском анімації заголовків після зникнення логотипу.
-    // --- ЛОГІКА WOW INTRO АНІМАЦІЇ (ФІНАЛЬНИЙ ОПТИМАЛЬНИЙ БАЛАНС) ---
+// =========================================================================
+// 💥 НОВА СЕКЦІЯ: ЛОГІКА WOW INTRO АНІМАЦІЇ 💥
+// Керує послідовним запуском анімації заголовків після зникнення логотипу.
+// --- ЛОГІКА WOW INTRO АНІМАЦІЇ (ФІНАЛЬНИЙ ОПТИМАЛЬНИЙ БАЛАНС) ---
 const logoIntro = document.querySelector('.hero-logo-intro');
 const heroTitle = document.querySelector('.hero-title');
 const heroSubtitle = document.querySelector('.hero-subtitle');
 
 // Запускаємо послідовність після 1.5 секунди (коли друк логотипу завершено і контейнер починає зникати).
 setTimeout(() => {
-    
     // 1. Запускаємо анімацію Головного заголовка (його фактична затримка: 1.8с)
     if (heroTitle) {
         heroTitle.classList.add('animate-in'); 
@@ -105,58 +88,105 @@ setTimeout(() => {
     if (heroSubtitle) {
         heroSubtitle.classList.add('animate-in');
     }
-
 }, 1500); // Змінено на 1500 мс (1.5 секунди)
 // -------------------------------------------------------------------
 // -------------------------------------------------------------------
-    // =========================================================================
 
-    console.log("Ticket 2 Love: Проект ініціалізовано.");
+console.log("Ticket 2 Love: Проект ініціалізовано.");
 
-    // === ФУНКЦІЯ ОНОВЛЕННЯ ЛІЧИЛЬНИКА ОБРАНИХ ===
-    // Ця функція оновлює текст кнопок "Обрані" та стан кнопки "Перейти до заявки".
-    const updateFavoritesCounter = () => {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        const count = favorites.length;
-        const favoritesButtons = document.querySelectorAll('.favorites-button');
-        
-        favoritesButtons.forEach(button => {
-            button.textContent = `Обрані (${count})`;
-        });
-        
-        const selectCountSpan = document.getElementById('select-count');
-        if (selectCountSpan) {
-            selectCountSpan.textContent = `(${count}/3)`;
-            const proceedButton = document.getElementById('proceed-to-application');
-            if (proceedButton) {
-                 if (count > 0) {
-                    proceedButton.classList.remove('disabled');
-                    proceedButton.removeAttribute('disabled');
-                 } else {
-                    proceedButton.classList.add('disabled');
-                    proceedButton.setAttribute('disabled', 'true');
-                 }
+// === ФУНКЦІЯ ОНОВЛЕННЯ ЛІЧИЛЬНИКА ОБРАНИХ ===
+// Ця функція оновлює текст кнопок "Обрані" та стан кнопки "Перейти до заявки".
+const updateFavoritesCounter = () => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const count = favorites.length;
+    const favoritesButtons = document.querySelectorAll('.favorites-button');
+    
+    favoritesButtons.forEach(button => {
+        button.textContent = `Обрані (${count})`;
+    });
+    
+    const selectCountSpan = document.getElementById('select-count');
+    if (selectCountSpan) {
+        selectCountSpan.textContent = `(${count}/3)`;
+        const proceedButton = document.getElementById('proceed-to-application');
+        if (proceedButton) {
+            if (count > 0) {
+                proceedButton.classList.remove('disabled');
+                proceedButton.removeAttribute('disabled');
+            } else {
+                proceedButton.classList.add('disabled');
+                proceedButton.setAttribute('disabled', 'true');
             }
         }
-    };
+    }
+};
 
+updateFavoritesCounter();
 
-    updateFavoritesCounter();
-    
-    // === ПРИХОВУВАННЯ ХЕДЕРА ПРИ СКРОЛІНГУ ===
-    // Додає клас 'hidden' до хедера при прокручуванні вниз.
-    const header = document.querySelector('.main-header');
-    let lastScroll = 0;
+// =========================================================================
+// 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ ТА ВІДОБРАЖЕННЯ)
+// Ця секція управляє фільтрацією та відображенням профілів на сторінці catalogue.html
+const profilesContainer = document.getElementById('profiles-container');
+const filterGender = document.getElementById('filter-gender');
+const filterAge = document.getElementById('filter-age');
+const filterCity = document.getElementById('filter-city');
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('hidden');
-        } else {
-            header.classList.remove('hidden');
-        }
-        lastScroll = currentScroll;
-    });
+// Функція для рендерингу профілів
+function renderProfiles(profilesToRender) {
+    if (profilesContainer) {
+        profilesContainer.innerHTML = '';
+        profilesToRender.forEach(profile => {
+            const profileCard = document.createElement('div');
+            profileCard.classList.add('profile-card', 'fade-in');
+            profileCard.innerHTML = `
+                <img src="assets/img/${profile.img}" alt="${profile.name}" class="profile-img">
+                <h3>${profile.name}, ${profile.age}</h3>
+                <p>${profile.city}</p>
+                <p>${profile.description}</p>
+                <button class="favorites-button" data-id="${profile.id}">
+                    Обрані (0)
+                </button>
+            `;
+            profilesContainer.appendChild(profileCard);
+
+            // Додаємо обробник для кнопки "Обрані"
+            const favButton = profileCard.querySelector('.favorites-button');
+            favButton.addEventListener('click', () => {
+                let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                if (!favorites.includes(profile.id)) {
+                    favorites.push(profile.id);
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                }
+                updateFavoritesCounter();
+            });
+        });
+    }
+}
+
+// Функція фільтрації
+function filterProfiles() {
+    let filteredProfiles = [...profiles];
+
+    if (filterGender && filterGender.value) {
+        filteredProfiles = filteredProfiles.filter(p => p.gender === filterGender.value);
+    }
+    if (filterAge && filterAge.value) {
+        filteredProfiles = filteredProfiles.filter(p => p.age <= parseInt(filterAge.value));
+    }
+    if (filterCity && filterCity.value) {
+        filteredProfiles = filteredProfiles.filter(p => p.city.toLowerCase().includes(filterCity.value.toLowerCase()));
+    }
+
+    renderProfiles(filteredProfiles);
+}
+
+// Ініціалізація
+if (profilesContainer) {
+    renderProfiles(profiles);
+    if (filterGender) filterGender.addEventListener('change', filterProfiles);
+    if (filterAge) filterAge.addEventListener('change', filterProfiles);
+    if (filterCity) filterCity.addEventListener('input', filterProfiles);
+}
 
     // =========================================================================
     // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ ТА ВІДОБРАЖЕННЯ)
@@ -404,6 +434,7 @@ setTimeout(() => {
 });
 
 // =
+
 
 
 
