@@ -37,15 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeInElements.forEach(el => observer.observe(el));
 
     // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    if (navToggle && mainNav) {
-        navToggle.addEventListener('click', () => {
-            const isOpen = mainNav.classList.toggle('is-open');
-            navToggle.setAttribute('aria-expanded', isOpen);
-            navToggle.innerHTML = isOpen ? '&times;' : '&#9776;';
-        });
-    }
+   
+        const navToggle = document.querySelector('.nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        if (navToggle && mainNav) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = mainNav.classList.toggle('is-open');
+                navToggle.classList.toggle('is-open', isOpen);
+                navToggle.setAttribute('aria-expanded', isOpen);
+
+                // Закриття при повторному кліку або кліку поза меню
+                if (isOpen) {
+                    document.addEventListener('click', closeMenuOnOutsideClick);
+                } else {
+                    document.removeEventListener('click', closeMenuOnOutsideClick);
+                }
+            });
+
+            // Функція для закриття меню при кліку поза ним
+            function closeMenuOnOutsideClick(e) {
+                if (!mainNav.contains(e.target) && e.target !== navToggle) {
+                    mainNav.classList.remove('is-open');
+                    navToggle.classList.remove('is-open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.removeEventListener('click', closeMenuOnOutsideClick);
+                }
+            }
+        }
+    });
+
 
     // =========================================================================
     // 💥 НОВА СЕКЦІЯ: ЛОГІКА WOW INTRO АНІМАЦІЇ 💥
@@ -364,4 +385,5 @@ setTimeout(() => {
 
 
 });
+
 // =
