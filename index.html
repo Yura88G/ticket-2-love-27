@@ -144,13 +144,18 @@
         const navToggle = document.querySelector('.nav-toggle');
         const mainNav = document.querySelector('.main-nav');
 
-        navToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('is-open');
-        });
+        if (navToggle && mainNav) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = mainNav.classList.toggle('is-open');
+                navToggle.classList.toggle('is-open', isOpen);
+                navToggle.setAttribute('aria-expanded', isOpen);
+            });
+        }
     });
 </script>
 </body>
 </html>
+
 
 
 
