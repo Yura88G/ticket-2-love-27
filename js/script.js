@@ -23,37 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // === ЛОГІКА АНІМАЦІЇ FADE-IN ПРИ СКРОЛІНГУ ===
     const fadeInElements = document.querySelectorAll('.fade-in');
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
+const observerOptions = { root: null, rootMargin: '0px', threshold: 0.2 };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
-    fadeInElements.forEach(el => observer.observe(el));
+fadeInElements.forEach(el => observer.observe(el));
 
-    // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
-   
-       // Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
+// === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
+// Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 
 if (navToggle && mainNav) {
     navToggle.addEventListener('click', () => {
-        const isOpen = mainNav.classList.toggle('is-open');
-        navToggle.classList.toggle('is-open', isOpen); // Анімація "X"
-        navToggle.setAttribute('aria-expanded', isOpen);
+        // Додаємо невелику затримку для стабілізації
+        setTimeout(() => {
+            const isOpen = mainNav.classList.toggle('is-open');
+            navToggle.classList.toggle('is-open', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen);
 
-        // Закриття при повторному кліку або кліку поза меню
-        if (isOpen) {
-            document.addEventListener('click', closeMenuOnOutsideClick);
-        } else {
-            document.removeEventListener('click', closeMenuOnOutsideClick);
-        }
+            // Закриття при повторному кліку або кліку поза меню
+            if (isOpen) {
+                document.addEventListener('click', closeMenuOnOutsideClick);
+            } else {
+                document.removeEventListener('click', closeMenuOnOutsideClick);
+            }
+        }, 50); // Затримка 50 мс
     });
 
     // Функція для закриття меню при кліку поза ним
@@ -66,7 +68,6 @@ if (navToggle && mainNav) {
         }
     }
 }
-
 
     // =========================================================================
     // 💥 НОВА СЕКЦІЯ: ЛОГІКА WOW INTRO АНІМАЦІЇ 💥
@@ -387,4 +388,5 @@ setTimeout(() => {
 });
 
 // =
+
 
