@@ -38,34 +38,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
    
-        const navToggle = document.querySelector('.nav-toggle');
-        const mainNav = document.querySelector('.main-nav');
+       // Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
+const navToggle = document.querySelector('.nav-toggle');
+const mainNav = document.querySelector('.main-nav');
 
-        if (navToggle && mainNav) {
-            navToggle.addEventListener('click', () => {
-                const isOpen = mainNav.classList.toggle('is-open');
-                navToggle.classList.toggle('is-open', isOpen);
-                navToggle.setAttribute('aria-expanded', isOpen);
+if (navToggle && mainNav) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = mainNav.classList.toggle('is-open');
+        navToggle.classList.toggle('is-open', isOpen); // Анімація "X"
+        navToggle.setAttribute('aria-expanded', isOpen);
 
-                // Закриття при повторному кліку або кліку поза меню
-                if (isOpen) {
-                    document.addEventListener('click', closeMenuOnOutsideClick);
-                } else {
-                    document.removeEventListener('click', closeMenuOnOutsideClick);
-                }
-            });
-
-            // Функція для закриття меню при кліку поза ним
-            function closeMenuOnOutsideClick(e) {
-                if (!mainNav.contains(e.target) && e.target !== navToggle) {
-                    mainNav.classList.remove('is-open');
-                    navToggle.classList.remove('is-open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                    document.removeEventListener('click', closeMenuOnOutsideClick);
-                }
-            }
+        // Закриття при повторному кліку або кліку поза меню
+        if (isOpen) {
+            document.addEventListener('click', closeMenuOnOutsideClick);
+        } else {
+            document.removeEventListener('click', closeMenuOnOutsideClick);
         }
     });
+
+    // Функція для закриття меню при кліку поза ним
+    function closeMenuOnOutsideClick(e) {
+        if (!mainNav.contains(e.target) && e.target !== navToggle) {
+            mainNav.classList.remove('is-open');
+            navToggle.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.removeEventListener('click', closeMenuOnOutsideClick);
+        }
+    }
+}
 
 
     // =========================================================================
@@ -387,3 +387,4 @@ setTimeout(() => {
 });
 
 // =
+
