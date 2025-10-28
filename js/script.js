@@ -36,39 +36,70 @@ const observer = new IntersectionObserver((entries, observer) => {
 fadeInElements.forEach(el => observer.observe(el));
 
 // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
+// === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
 // Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 
 if (navToggle && mainNav) {
-    navToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Попереджаємо конфлікт із зовнішніми кліками
-        setTimeout(() => {
-            const isOpen = !mainNav.classList.contains('is-open'); // Перевірка стану
-            mainNav.classList.toggle('is-open', isOpen);
-            navToggle.classList.toggle('is-open', isOpen);
-            navToggle.setAttribute('aria-expanded', isOpen);
+    // === ФУНКЦІЯ ЗАКРИТТЯ МЕНЮ ===
+    const closeMenu = () => {
+        mainNav.classList.remove('is-open');
+        navToggle.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', closeMenuOnOutsideClick);
+    };
 
-            // Управління закриттям
-            if (isOpen) {
-                document.addEventListener('click', closeMenuOnOutsideClick);
-            } else {
-                document.removeEventListener('click', closeMenuOnOutsideClick);
-            }
-        }, 50); // Затримка для стабілізації
+    // === КЛІК ПО КНОПЦІ ГАМБУРГЕР ===
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = !mainNav.classList.contains('is-open');
+        
+        mainNav.classList.toggle('is-open', isOpen);
+        navToggle.classList.toggle('is-open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+
+        if (isOpen) {
+            document.addEventListener('click', closeMenuOnOutsideClick);
+        } else {
+            closeMenu();
+        }
     });
 
-    // Функція для закриття меню при кліку поза ним
+    // === КЛІК ПО ПУНКТУ МЕНЮ (усі <a>) ===
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Зупиняємо перехід
+            const href = link.getAttribute('href');
+
+            // Закриваємо меню
+            closeMenu();
+
+            // Плавний скрол до секції (якщо це якір)
+            if (href && href.startsWith('#') && href !== '#') {
+                const target = document.querySelector(href);
+                if (target) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: target.offsetTop - 80, // Відступ під хедер
+                            behavior: 'smooth'
+                        });
+                    }, 300); // Чекаємо, поки меню закриється
+                }
+            }
+        });
+    });
+
+    // === КЛІК ПОЗА МЕНЮ ===
     function closeMenuOnOutsideClick(e) {
         if (!mainNav.contains(e.target) && e.target !== navToggle) {
-            mainNav.classList.remove('is-open');
-            navToggle.classList.remove('is-open');
-            navToggle.setAttribute('aria-expanded', 'false');
-            document.removeEventListener('click', closeMenuOnOutsideClick);
+            closeMenu();
         }
     }
-}
 
+    // === ДОДАЄМО ОБРОБНИК ПІСЛЯ ВІДКРИТТЯ (опціонально, для надійності) ===
+    // Якщо пункти меню додаються динамічно — це не потрібно
+}
 // =========================================================================
 // 💥 НОВА СЕКЦІЯ: ЛОГІКА WOW INTRO АНІМАЦІЇ 💥
 // Керує послідовним запуском анімації заголовків після зникнення логотипу.
@@ -434,6 +465,7 @@ if (profilesContainer) {
 });
 
 // =
+
 
 
 
