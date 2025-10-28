@@ -128,13 +128,22 @@ console.log("Ticket 2 Love: Проект ініціалізовано.");
 // === ФУНКЦІЯ ОНОВЛЕННЯ ЛІЧИЛЬНИКА ОБРАНИХ ===
 // Ця функція оновлює текст кнопок "Обрані" та стан кнопки "Перейти до заявки".
 const updateFavoritesCounter = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    let favorites = [];
+    try {
+        const data = localStorage.getItem('favorites');
+        favorites = data ? JSON.parse(data) : [];
+    } catch (e) {
+        console.warn('localStorage недоступний або пошкоджений:', e);
+        favorites = [];
+    }
+    
     const count = favorites.length;
     const favoritesButtons = document.querySelectorAll('.favorites-button');
     
     favoritesButtons.forEach(button => {
         button.textContent = `Обрані (${count})`;
     });
+};
     
     const selectCountSpan = document.getElementById('select-count');
     if (selectCountSpan) {
@@ -258,12 +267,20 @@ if (profilesContainer) {
         
         if (profileGrid) {
             
-            filteredProfiles.forEach(profile => {
-                
-                const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-                const isFavorite = favorites.includes(profile.id.toString());
-                const favoriteClass = isFavorite ? 'is-favorite' : '';
-                
+           filteredProfiles.forEach(profile => {
+    let favorites = [];
+    try {
+        const data = localStorage.getItem('favorites');
+        favorites = data ? JSON.parse(data) : [];
+    } catch (e) {
+        console.warn('localStorage недоступний або пошкоджений:', e);
+        favorites = [];
+    }
+
+    const isFavorite = favorites.includes(profile.id.toString());
+    const favoriteClass = isFavorite ? 'is-favorite' : '';
+  
+});
                 const profileCard = document.createElement('div');
                 profileCard.className = 'profile-card';
                 profileCard.innerHTML = `
@@ -286,31 +303,45 @@ if (profilesContainer) {
             });
             
             // Додавання обробників подій для кнопок "Обрати"
-            document.querySelectorAll('.favorite-toggle').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const id = e.currentTarget.dataset.id;
-                    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-                    
-                    if (favorites.includes(id)) {
-                        // Видалити з обраних
-                        favorites = favorites.filter(favId => favId !== id);
-                        e.currentTarget.classList.remove('is-favorite');
-                    } else {
-                        // Додати до обраних (з лімітом 3)
-                        if (favorites.length < 3) {
-                            favorites.push(id);
-                            e.currentTarget.classList.add('is-favorite');
-                        } else {
-                            alert('Ви досягли ліміту (3 профілі). Будь ласка, перейдіть до оформлення заявки.');
-                        }
-                    }
-                    
-                    localStorage.setItem('favorites', JSON.stringify(favorites));
-                    updateFavoritesCounter();
-                });
-            });
+           // Додавання обробників подій для кнопок "Обрати"
+document.querySelectorAll('.favorite-toggle').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = e.currentTarget.dataset.id;
+
+        // === БЕЗПЕЧНЕ читання localStorage ===
+        let favorites = [];
+        try {
+            const data = localStorage.getItem('favorites');
+            favorites = data ? JSON.parse(data) : [];
+        } catch (err) {
+            console.warn('localStorage недоступний або пошкоджений:', err);
+            favorites = [];
         }
+
+        // === Логіка додавання/видалення ===
+        if (favorites.includes(id)) {
+            favorites = favorites.filter(favId => favId !== id);
+            e.currentTarget.classList.remove('is-favorite');
+        } else {
+            if (favorites.length < 3) {
+                favorites.push(id);
+                e.currentTarget.classList.add('is-favorite');
+            } else {
+                alert('Ви досягли ліміту (3 профілі). Будь ласка, перейдіть до оформлення заявки.');
+            }
+        }
+
+        // === БЕЗПЕЧНЕ збереження ===
+        try {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        } catch (err) {
+            console.warn('Не вдалося зберегти в localStorage:', err);
+        }
+
+        updateFavoritesCounter();
+    });
+});
         
         // Логіка переходу до заявки
         const proceedButton = document.getElementById('proceed-to-application');
@@ -465,6 +496,7 @@ if (profilesContainer) {
 });
 
 // =
+
 
 
 
