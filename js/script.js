@@ -298,8 +298,8 @@ if (profilesContainer) {
                     </div>
                 `;
                 profileGrid.appendChild(profileCard);
-            });
-
+           }); 
+        } 
            // Додавання обробників подій для кнопок "Обрати"
 document.querySelectorAll('.favorite-toggle').forEach(button => {
     button.addEventListener('click', (e) => {
@@ -493,6 +493,7 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
 });
 
 // =
+
 
 
 
