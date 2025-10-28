@@ -487,9 +487,9 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
         });
         heightRange.addEventListener('input', () => {
            heightValue.textContent = `${heightRange.value} см`;
-        });
+  });
     }
-// =
+
 
 
 
