@@ -297,12 +297,13 @@ if (profilesContainer) {
                         <a href="profile.html?id=${profile.id}" class="view-profile-btn cta-her">Переглянути</a>
                     </div>
                 `;
-                profileGrid.appendChild(profileCard);
-         }); // <-- Закриття filteredProfiles.forEach()
-        } //
-           // Додавання обробників подій для кнопок "Обрати"
+              profileGrid.appendChild(profileCard);
+            }); // <-- 1. Закриття filteredProfiles.forEach()
+        } // <-- 💡 ЦЕ ТЕ, ЩО ВИ ПРОПУСТИЛИ! Закриття if (profileGrid)
+ 
+           // Додавання обробників подій для кнопок "Обрати"
 document.querySelectorAll('.favorite-toggle').forEach(button => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', (e) => {
         e.preventDefault();
         const id = e.currentTarget.dataset.id;
 
@@ -493,6 +494,7 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
 });
 
 // =
+
 
 
 
