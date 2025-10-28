@@ -502,3 +502,4 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
 
 
 
+
