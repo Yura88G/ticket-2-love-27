@@ -143,7 +143,6 @@ const updateFavoritesCounter = () => {
     favoritesButtons.forEach(button => {
         button.textContent = `Обрані (${count})`;
     });
-};
     
     const selectCountSpan = document.getElementById('select-count');
     if (selectCountSpan) {
@@ -496,6 +495,7 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
 });
 
 // =
+
 
 
 
