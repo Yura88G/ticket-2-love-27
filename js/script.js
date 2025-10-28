@@ -145,24 +145,22 @@ const updateFavoritesCounter = () => {
         button.textContent = `Обрані (${count})`;
     });
     
-    const selectCountSpan = document.getElementById('select-count');
-    if (selectCountSpan) {
-        selectCountSpan.textContent = `(${count}/3)`;
-        const proceedButton = document.getElementById('proceed-to-application');
-        if (proceedButton) {
-            if (count > 0) {
-                proceedButton.classList.remove('disabled');
-                proceedButton.removeAttribute('disabled');
-            } else {
-                proceedButton.classList.add('disabled');
-                proceedButton.setAttribute('disabled', 'true');
+           const selectCountSpan = document.getElementById('select-count');
+        if (selectCountSpan) {
+            selectCountSpan.textContent = `(${count}/3)`;
+            const proceedButton = document.getElementById('proceed-to-application');
+            if (proceedButton) {
+                if (count > 0) {
+                    proceedButton.classList.remove('disabled');
+                    proceedButton.removeAttribute('disabled');
+                } else {
+                    proceedButton.classList.add('disabled');
+                    proceedButton.setAttribute('disabled', 'true');
+                }
             }
         }
     }
-};
-
-// Виклик функції після її оголошення
-updateFavoritesCounter();
+});
 
 // =========================================================================
 // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ ТА ВІДОБРАЖЕННЯ)
@@ -497,6 +495,7 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
 });
 
 // =
+
 
 
 
