@@ -278,8 +278,7 @@ if (profilesContainer) {
 
     const isFavorite = favorites.includes(profile.id.toString());
     const favoriteClass = isFavorite ? 'is-favorite' : '';
-  
-});
+
                 const profileCard = document.createElement('div');
                 profileCard.className = 'profile-card';
                 profileCard.innerHTML = `
@@ -494,6 +493,7 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
 });
 
 // =
+
 
 
 
