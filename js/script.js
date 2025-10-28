@@ -486,14 +486,11 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
             ageValue.textContent = `${ageRange.value} років`;
         });
         heightRange.addEventListener('input', () => {
-            heightValue.textContent = `${heightRange.value} см`;
-        });
-    }
-
-
-});
-
+           heightValue.textContent = `${heightRange.value} см`;
+        });
+    }
 // =
+
 
 
 
