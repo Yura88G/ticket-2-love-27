@@ -168,19 +168,6 @@ const updateFavoritesCounter = () => {
 // =========================================================================
 // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
 // =========================================================================
-
-// ПЕРЕВІРКА: чи є profiles
-if (typeof profiles === 'undefined') {
-    console.error('js/profiles.js не підключено!');
-    document.body.innerHTML += '<p style="color:red; text-align:center;">ПОМИЛКА: js/profiles.js не знайдено. Додай <script src="js/profiles.js"></script></p>';
-    throw new Error('js/profiles.js not defined');
-}
-
-const PROFILES_PER_PAGE = 6;
-let currentPage = 1;
-let filteredProfiles = [...profiles];
-let currentGender = '';
-
 // Оновлення відображення віку
 const updateAgeValue = (value) => {
     const ageValueEl = document.getElementById('age-value');
@@ -460,6 +447,7 @@ if (document.getElementById('profile-grid')) {
            heightValue.textContent = `${heightRange.value} см`;
   });
     }
+
 
 
 
