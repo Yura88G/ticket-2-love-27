@@ -163,199 +163,159 @@ const updateFavoritesCounter = () => {
 });
 
 // =========================================================================
-// 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ ТА ВІДОБРАЖЕННЯ)
-// Ця секція управляє фільтрацією та відображенням профілів на сторінці catalogue.html
-const profilesContainer = document.getElementById('profiles-container');
-const filterGender = document.getElementById('filter-gender');
-const filterAge = document.getElementById('filter-age');
-const filterCity = document.getElementById('filter-city');
+// 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
+// =========================================================================
+const PROFILES_PER_PAGE = 6;
+let currentPage = 1;
+let filteredProfiles = [...profiles];
+let currentGender = '';
 
-// Функція для рендерингу профілів
-function renderProfiles(profilesToRender) {
-    if (profilesContainer) {
-        profilesContainer.innerHTML = '';
-        profilesToRender.forEach(profile => {
-            const profileCard = document.createElement('div');
-            profileCard.classList.add('profile-card', 'fade-in');
-            profileCard.innerHTML = `
-                <img src="assets/img/${profile.img}" alt="${profile.name}" class="profile-img">
-                <h3>${profile.name}, ${profile.age}</h3>
-                <p>${profile.city}</p>
-                <p>${profile.description}</p>
-                <button class="favorites-button" data-id="${profile.id}">
-                    Обрані (0)
-                </button>
-            `;
-            profilesContainer.appendChild(profileCard);
+// Оновлення відображення віку
+const updateAgeValue = (value) => {
+    const ageValueEl = document.getElementById('age-value');
+    if (ageValueEl) ageValueEl.textContent = `18–${value}`;
+};
 
-            // Додаємо обробник для кнопки "Обрані"
-            const favButton = profileCard.querySelector('.favorites-button');
-            favButton.addEventListener('click', () => {
-                let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-                if (!favorites.includes(profile.id)) {
-                    favorites.push(profile.id);
-                    localStorage.setItem('favorites', JSON.stringify(favorites));
-                }
-                updateFavoritesCounter();
-            });
-        });
-    }
-}
+// Рендер карток
+const renderCatalog = () => {
+    const grid = document.getElementById('profile-grid');
+    if (!grid) return;
 
-// Функція фільтрації
-function filterProfiles() {
-    let filteredProfiles = [...profiles];
+    const start = (currentPage - 1) * PROFILES_PER_PAGE;
+    const end = start + PROFILES_PER_PAGE;
+    const pageProfiles = filteredProfiles.slice(start, end);
 
-    if (filterGender && filterGender.value) {
-        filteredProfiles = filteredProfiles.filter(p => p.gender === filterGender.value);
-    }
-    if (filterAge && filterAge.value) {
-        filteredProfiles = filteredProfiles.filter(p => p.age <= parseInt(filterAge.value));
-    }
-    if (filterCity && filterCity.value) {
-        filteredProfiles = filteredProfiles.filter(p => p.city.toLowerCase().includes(filterCity.value.toLowerCase()));
-    }
-
-    renderProfiles(filteredProfiles);
-}
-
-// Ініціалізація
-if (profilesContainer) {
-    renderProfiles(profiles);
-    if (filterGender) filterGender.addEventListener('change', filterProfiles);
-    if (filterAge) filterAge.addEventListener('change', filterProfiles);
-    if (filterCity) filterCity.addEventListener('input', filterProfiles);
-}
-
-    // =========================================================================
-    // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ ТА ВІДОБРАЖЕННЯ)
-    // Керує відображенням карток профілів залежно від вибраної статі в URL.
-    // =========================================================================
-    
-    const catalogueSection = document.getElementById('profile-catalogue');
-
-    if (catalogueSection) {
-        
-        // 1. Отримання параметру gender з URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const selectedGender = urlParams.get('gender'); 
-        
-        // 2. Фільтрація профілів
-        let filteredProfiles = [];
-        let catalogueTitle = 'Каталог Профілів';
-        
-        if (selectedGender === 'men') {
-            filteredProfiles = profiles.filter(p => p.gender === 'men'); 
-            catalogueTitle = 'Каталог Чоловічих Профілів 🤵';
-        } else if (selectedGender === 'women') {
-            filteredProfiles = profiles.filter(p => p.gender === 'women'); 
-            catalogueTitle = 'Каталог Жіночих Профілів 🌹';
-        } else {
-            // За замовчуванням показуємо жінок, якщо перехід був не з головної
-            filteredProfiles = profiles.filter(p => p.gender === 'women');
-            catalogueTitle = 'Каталог Жіночих Профілів 🌹 (Оберіть стать на Головній)';
-        }
-
-        // 3. Оновлення заголовка сторінки
-        const catalogueH1 = document.getElementById('catalogue-title');
-        if(catalogueH1) {
-             catalogueH1.textContent = catalogueTitle;
-        }
-
-        const profileGrid = document.getElementById('profile-grid');
-        
-        if (profileGrid) {
-            
-           filteredProfiles.forEach(profile => {
-    let favorites = [];
-    try {
-        const data = localStorage.getItem('favorites');
-        favorites = data ? JSON.parse(data) : [];
-    } catch (e) {
-        console.warn('localStorage недоступний або пошкоджений:', e);
-        favorites = [];
-    }
-
-    const isFavorite = favorites.includes(profile.id.toString());
-    const favoriteClass = isFavorite ? 'is-favorite' : '';
-
-                const profileCard = document.createElement('div');
-                profileCard.className = 'profile-card';
-                profileCard.innerHTML = `
-                    <div class="card-header-wrapper">
-                         <img src="assets/img/${profile.img}" alt="Фото ${profile.name}" class="profile-photo">
-                         <button class="favorite-toggle ${favoriteClass}" data-id="${profile.id}">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="card-content">
-                        <h2 class="profile-name">${profile.name}, ${profile.age}</h2>
-                        <p class="profile-city">${profile.city}</p>
-                        <p class="profile-description">${profile.description}</p>
-                        <a href="profile.html?id=${profile.id}" class="view-profile-btn cta-her">Переглянути</a>
-                    </div>
-                `;
-              profileGrid.appendChild(profileCard);
-            }); // <-- 1. Закриття filteredProfiles.forEach()
-        } // <-- 💡 ЦЕ ТЕ, ЩО ВИ ПРОПУСТИЛИ! Закриття if (profileGrid)
- 
-           // Додавання обробників подій для кнопок "Обрати"
-document.querySelectorAll('.favorite-toggle').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = e.currentTarget.dataset.id;
-
-        // === БЕЗПЕЧНЕ читання localStorage ===
+    grid.innerHTML = pageProfiles.map(p => {
         let favorites = [];
         try {
             const data = localStorage.getItem('favorites');
             favorites = data ? JSON.parse(data) : [];
-        } catch (err) {
-            console.warn('localStorage недоступний або пошкоджений:', err);
-            favorites = [];
+        } catch (e) {
+            console.warn('localStorage error:', e);
         }
+        const isFavorite = favorites.includes(p.id.toString());
+        const favoriteClass = isFavorite ? 'is-favorite' : '';
 
-        // === Логіка додавання/видалення ===
-        if (favorites.includes(id)) {
-            favorites = favorites.filter(favId => favId !== id);
-            e.currentTarget.classList.remove('is-favorite');
-        } else {
-            if (favorites.length < 3) {
+        return `
+            <div class="profile-card" data-id="${p.id}">
+                <div class="card-header-wrapper">
+                    <img src="assets/img/${p.img}" alt="${p.name}" class="profile-photo" loading="lazy">
+                    <button class="favorite-toggle ${favoriteClass}" data-id="${p.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="card-content">
+                    <h2 class="profile-name">${p.name}, ${p.age}</h2>
+                    <p class="profile-city">${p.city}</p>
+                    <p class="profile-description">${p.description}</p>
+                    <a href="profile.html?id=${p.id}" class="view-profile-btn cta-her">Переглянути</a>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    renderPagination();
+    attachFavoriteHandlers();
+};
+
+// Пагінація
+const renderPagination = () => {
+    const totalPages = Math.ceil(filteredProfiles.length / PROFILES_PER_PAGE);
+    const pagination = document.getElementById('pagination');
+    if (!pagination) return;
+
+    pagination.innerHTML = '';
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'page-btn';
+        btn.textContent = i;
+        if (i === currentPage) btn.classList.add('active');
+        btn.onclick = () => {
+            currentPage = i;
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        pagination.appendChild(btn);
+    }
+};
+
+// Обробники кнопок "Обрати"
+const attachFavoriteHandlers = () => {
+    document.querySelectorAll('.favorite-toggle').forEach(button => {
+        button.onclick = (e) => {
+            e.preventDefault();
+            const id = e.currentTarget.dataset.id;
+
+            let favorites = [];
+            try {
+                const data = localStorage.getItem('favorites');
+                favorites = data ? JSON.parse(data) : [];
+            } catch (err) {
+                console.warn('localStorage error:', err);
+            }
+
+            if (favorites.includes(id)) {
+                favorites = favorites.filter(f => f !== id);
+                e.currentTarget.classList.remove('is-favorite');
+            } else if (favorites.length < 3) {
                 favorites.push(id);
                 e.currentTarget.classList.add('is-favorite');
             } else {
-                alert('Ви досягли ліміту (3 профілі). Будь ласка, перейдіть до оформлення заявки.');
+                alert('Ліміт 3 профілі. Перейдіть до заявки.');
             }
-        }
 
-        // === БЕЗПЕЧНЕ збереження ===
-        try {
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-        } catch (err) {
-            console.warn('Не вдалося зберегти в localStorage:', err);
-        }
+            try {
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+            } catch (err) {
+                console.warn('Save error:', err);
+            }
 
-        updateFavoritesCounter();
+            updateFavoritesCounter();
+        };
     });
-});
-        
-        // Логіка переходу до заявки
-        const proceedButton = document.getElementById('proceed-to-application');
-        if (proceedButton) {
-            proceedButton.addEventListener('click', () => {
-                const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-                if (favorites.length > 0) {
-                    alert(`Перехід до форми заявки. Обрані ID: ${favorites.join(', ')}`);
-                } else {
-                    alert('Будь ласка, оберіть хоча б один профіль.');
-                }
-            });
+};
+
+// Ініціалізація каталогу
+if (document.getElementById('profile-grid')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    currentGender = urlParams.get('gender') || '';
+
+    // Фільтр за статтю (з головної)
+    if (currentGender) {
+        filteredProfiles = profiles.filter(p => p.gender === currentGender);
+    }
+
+    // Заголовок
+    const titleEl = document.getElementById('catalogue-title');
+    if (titleEl) {
+        if (currentGender === 'men') {
+            titleEl.textContent = 'Каталог Чоловічих Профілів 🤵';
+        } else if (currentGender === 'women') {
+            titleEl.textContent = 'Каталог Жіночих Профілів 🌹';
+        } else {
+            titleEl.textContent = 'Каталог Профілів';
         }
     }
 
+    // Фільтр по віку
+    const ageSlider = document.getElementById('age-range');
+    if (ageSlider) {
+        ageSlider.addEventListener('input', () => {
+            const maxAge = ageSlider.value;
+            updateAgeValue(maxAge);
+            filteredProfiles = profiles.filter(p => 
+                p.age <= maxAge && (!currentGender || p.gender === currentGender)
+            );
+            currentPage = 1;
+            renderCatalog();
+        });
+        updateAgeValue(ageSlider.value);
+    }
 
+    renderCatalog();
+}
     // =========================================================================
     // 4. ЛОГІКА СТОРІНКИ ДЕТАЛЬНОГО ПРОФІЛЮ (profile.html)
     // Відображає деталі конкретного профілю за ID з URL.
@@ -489,6 +449,7 @@ document.querySelectorAll('.favorite-toggle').forEach(button => {
            heightValue.textContent = `${heightRange.value} см`;
   });
     }
+
 
 
 
