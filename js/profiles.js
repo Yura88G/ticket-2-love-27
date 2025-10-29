@@ -6,7 +6,7 @@ const profiles = [
         age: 32,
         city: "Київ",
         gender: "men",
-        img: "men1.jpg",
+        img: "placeholder-man-1.jpg",
         description: "Люблю подорожі та спорт. Шукаю серйозні стосунки."
     },
     {
@@ -15,7 +15,7 @@ const profiles = [
         age: 28,
         city: "Львів",
         gender: "men",
-        img: "men2.jpg",
+        img: "placeholder-man-2.jpg",
         description: "Музикант, люблю каву і глибокі розмови."
     },
     {
@@ -24,7 +24,7 @@ const profiles = [
         age: 26,
         city: "Одеса",
         gender: "women",
-        img: "women1.jpg",
+        img: "placeholder-woman-1.jpg",
         description: "Танцюристка, люблю море і романтику."
     },
     {
@@ -33,7 +33,7 @@ const profiles = [
         age: 29,
         city: "Харків",
         gender: "women",
-        img: "women2.jpg",
+        img: "placeholder-woman-2.jpg",
         description: "Дизайнерка, шукаю натхнення і любов."
     },
     {
@@ -42,7 +42,7 @@ const profiles = [
         age: 35,
         city: "Дніпро",
         gender: "men",
-        img: "men3.jpg",
+        img: "placeholder-man-3.jpg",
         description: "Бізнесмен, люблю активний відпочинок."
     },
     {
@@ -51,7 +51,7 @@ const profiles = [
         age: 24,
         city: "Київ",
         gender: "women",
-        img: "women3.jpg",
+        img: "placeholder-woman-3.jpg",
         description: "Студентка, люблю книги і прогулянки."
     },
     {
@@ -69,7 +69,7 @@ const profiles = [
         age: 31,
         city: "Одеса",
         gender: "women",
-        img: "women4.jpg",
+        img: "placeholder-woman-1.jpg",
         description: "Вчителька, люблю дітей і природу."
     },
     {
@@ -78,7 +78,7 @@ const profiles = [
         age: 33,
         city: "Київ",
         gender: "men",
-        img: "men5.jpg",
+        img: "placeholder-man-1.jpg",
         description: "IT-фахівець, люблю техніку і природу."
     },
     {
@@ -87,7 +87,7 @@ const profiles = [
         age: 27,
         city: "Львів",
         gender: "women",
-        img: "women5.jpg",
+         img: "placeholder-woman-2.jpg",
         description: "Фотографка, люблю мистецтво і подорожі."
     }
 ];
