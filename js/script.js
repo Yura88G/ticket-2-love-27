@@ -152,9 +152,22 @@ const updateFavoritesCounter = () => {
 // =========================================================================
 // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
 // =========================================================================
-// =========================================================================
 // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
 // =========================================================================
+
+// ГЛОБАЛЬНІ ЗМІННІ — НА ПОЧАТОКУ!
+const PROFILES_PER_PAGE = 6;
+let currentPage = 1;
+let filteredProfiles = [];
+let currentGender = '';
+
+// ПЕРЕВІРКА: чи є profiles
+if (typeof profiles === 'undefined') {
+    console.error('js/profiles.js не підключено!');
+    document.body.innerHTML += '<p style="color:red; text-align:center;">ПОМИЛКА: js/profiles.js не знайдено.</p>';
+    throw new Error('profiles.js not loaded');
+}
+
 // Оновлення відображення віку
 const updateAgeValue = (value) => {
     const ageValueEl = document.getElementById('age-value');
@@ -262,15 +275,15 @@ const attachFavoriteHandlers = () => {
     });
 };
 
-// Ініціалізація каталогу
+// ІНІЦІАЛІЗАЦІЯ КАТАЛОГУ
 if (document.getElementById('profile-grid')) {
     const urlParams = new URLSearchParams(window.location.search);
     currentGender = urlParams.get('gender') || '';
 
-    // Фільтр за статтю (з головної)
-    if (currentGender) {
-        filteredProfiles = profiles.filter(p => p.gender === currentGender);
-    }
+    // Фільтр за статтю
+    filteredProfiles = currentGender 
+        ? profiles.filter(p => p.gender === currentGender)
+        : [...profiles];
 
     // Заголовок
     const titleEl = document.getElementById('catalogue-title');
@@ -284,7 +297,7 @@ if (document.getElementById('profile-grid')) {
         }
     }
 
-    // Фільтр по віку
+    // Слайдер віку
     const ageSlider = document.getElementById('age-range');
     if (ageSlider) {
         ageSlider.addEventListener('input', () => {
@@ -434,6 +447,7 @@ if (document.getElementById('profile-grid')) {
            heightValue.textContent = `${heightRange.value} см`;
   });
     }
+
 
 
 
