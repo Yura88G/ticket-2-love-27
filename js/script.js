@@ -447,6 +447,25 @@ if (document.getElementById('profile-grid')) {
            heightValue.textContent = `${heightRange.value} см`;
   });
     }
+// ========================================
+// 4.3. FAQ АКОРДЕОН — розкриття питань
+// ========================================
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+
+        // Закриваємо всі інші
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Відкриваємо поточний (якщо не був активний)
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    });
+});
 
 
 
