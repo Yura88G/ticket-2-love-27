@@ -27,13 +27,19 @@
         <section id="profile-catalogue" class="catalogue-section">
             <h1 id="catalogue-title" class="section-title fade-in">Каталог Профілів</h1> 
             
-            <div class="filters-sort-bar fade-in">
-                <button id="open-filters" class="filter-button cta-him">Фільтри та Сортування</button> 
-                <button id="sort-age" class="filter-button cta-him">Сортувати за Віком</button>
-                <a href="application.html" id="proceed-to-application" class="cta-button cta-her disabled" disabled>
-                    Перейти до заявки <span id="select-count">(0/3)</span>
-                </a>
-            </div>
+            <div class="catalogue-controls fade-in">
+    <div class="age-filter">
+        <label for="age-range">Вік: <span id="age-value">18–55</span></label>
+        <input type="range" id="age-range" min="18" max="55" value="55" class="age-slider">
+    </div>
+
+    <a href="application.html" id="proceed-to-application" class="cta-button cta-her disabled" disabled>
+        Перейти до заявки <span id="select-count">(0/3)</span>
+    </a>
+</div>
+
+<!-- Пагінація -->
+<div class="pagination" id="pagination"></div>
 
             <div class="profile-grid" id="profile-grid"> 
             </div>
@@ -49,4 +55,5 @@
 </body>
 
 </html>
+
 
