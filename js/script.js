@@ -172,8 +172,8 @@ const updateFavoritesCounter = () => {
 // ПЕРЕВІРКА: чи є profiles
 if (typeof profiles === 'undefined') {
     console.error('js/profiles.js не підключено!');
-    document.body.innerHTML += '<p style="color:red; text-align:center;">ПОМИЛКА: profiles.js не знайдено. Додай <script src="data/profiles.js"></script></p>';
-    throw new Error('profiles is not defined');
+    document.body.innerHTML += '<p style="color:red; text-align:center;">ПОМИЛКА: js/profiles.js не знайдено. Додай <script src="js/profiles.js"></script></p>';
+    throw new Error('js/profiles.js not defined');
 }
 
 const PROFILES_PER_PAGE = 6;
@@ -460,6 +460,7 @@ if (document.getElementById('profile-grid')) {
            heightValue.textContent = `${heightRange.value} см`;
   });
     }
+
 
 
 
