@@ -1,4 +1,3 @@
-// data/profiles.js
 const profiles = [
     {
         id: 1,
@@ -6,8 +5,8 @@ const profiles = [
         age: 32,
         city: "Київ",
         gender: "men",
-        img: "placeholder-man-1.jpg",
-        description: "Люблю подорожі та спорт. Шукаю серйозні стосунки."
+        img: "placeholder-man-1.jpg",  // Зміни на реальні назви
+        description: "Люблю подорожі та спорт."
     },
     {
         id: 2,
@@ -16,7 +15,7 @@ const profiles = [
         city: "Львів",
         gender: "men",
         img: "placeholder-man-2.jpg",
-        description: "Музикант, люблю каву і глибокі розмови."
+        description: "Музикант, люблю каву."
     },
     {
         id: 3,
@@ -24,8 +23,8 @@ const profiles = [
         age: 26,
         city: "Одеса",
         gender: "women",
-        img: "placeholder-woman-1.jpg",
-        description: "Танцюристка, люблю море і романтику."
+        img: "placeholder-woman-1.jpg",  // Твоя заглушка
+        description: "Танцюристка, люблю море."
     },
     {
         id: 4,
@@ -34,7 +33,7 @@ const profiles = [
         city: "Харків",
         gender: "women",
         img: "placeholder-woman-2.jpg",
-        description: "Дизайнерка, шукаю натхнення і любов."
+        description: "Дизайнерка."
     },
     {
         id: 5,
@@ -43,7 +42,7 @@ const profiles = [
         city: "Дніпро",
         gender: "men",
         img: "placeholder-man-3.jpg",
-        description: "Бізнесмен, люблю активний відпочинок."
+        description: "Бізнесмен."
     },
     {
         id: 6,
@@ -52,42 +51,6 @@ const profiles = [
         city: "Київ",
         gender: "women",
         img: "placeholder-woman-3.jpg",
-        description: "Студентка, люблю книги і прогулянки."
-    },
-    {
-        id: 7,
-        name: "Віктор",
-        age: 30,
-        city: "Львів",
-        gender: "men",
-        img: "men4.jpg",
-        description: "Фотограф, шукаю свою музу."
-    },
-    {
-        id: 8,
-        name: "Олена",
-        age: 31,
-        city: "Одеса",
-        gender: "women",
-        img: "placeholder-woman-1.jpg",
-        description: "Вчителька, люблю дітей і природу."
-    },
-    {
-        id: 9,
-        name: "Павло",
-        age: 33,
-        city: "Київ",
-        gender: "men",
-        img: "placeholder-man-1.jpg",
-        description: "IT-фахівець, люблю техніку і природу."
-    },
-    {
-        id: 10,
-        name: "Юлія",
-        age: 27,
-        city: "Львів",
-        gender: "women",
-         img: "placeholder-woman-2.jpg",
-        description: "Фотографка, люблю мистецтво і подорожі."
+        description: "Студентка."
     }
 ];
