@@ -165,6 +165,17 @@ const updateFavoritesCounter = () => {
 // =========================================================================
 // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
 // =========================================================================
+// =========================================================================
+// 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
+// =========================================================================
+
+// ПЕРЕВІРКА: чи є profiles
+if (typeof profiles === 'undefined') {
+    console.error('profiles.js не підключено!');
+    document.body.innerHTML += '<p style="color:red; text-align:center;">ПОМИЛКА: profiles.js не знайдено. Додай <script src="data/profiles.js"></script></p>';
+    throw new Error('profiles is not defined');
+}
+
 const PROFILES_PER_PAGE = 6;
 let currentPage = 1;
 let filteredProfiles = [...profiles];
@@ -449,6 +460,7 @@ if (document.getElementById('profile-grid')) {
            heightValue.textContent = `${heightRange.value} см`;
   });
     }
+
 
 
 
