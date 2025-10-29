@@ -52,9 +52,22 @@
     </footer>
 <script src="js/profiles.js"></script>
 <script src="script.js"></script>
+    <script>
+// ТИМЧАСОВА ПЕРЕВІРКА
+if (typeof profiles === 'undefined') {
+    document.body.innerHTML = `
+        <div style="padding:50px; text-align:center; color:red; font-size:20px;">
+            <h2>ПОМИЛКА!</h2>
+            <p>Файл <code>js/profiles.js</code> НЕ ЗАВАНТАЖЕНО</p>
+            <p>Перевірте шлях і назву файлу!</p>
+        </div>
+    `;
+}
+</script>
 </body>
 
 </html>
+
 
 
 
