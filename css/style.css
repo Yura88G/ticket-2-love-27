@@ -529,68 +529,147 @@ button, input, textarea, .main-nav a, .logo {
 }
 /* ========================================================================= */
 /* 6. СЕКЦІЯ "ЯК ЦЕ ПРАЦЮЄ" (HOW IT WORKS) */
-/* ========================================================================= */
-.how-it-works-section {
-    padding: 60px 20px;
+/* ======================================== */
+/* БЛОК: ТРИ КРОКИ ДО ЗУСТРІЧІ — GLASSMORPHISM */
+/* ======================================== */
+.steps-section {
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 0 15px;
     text-align: center;
 }
 
-.section-title {
-    font-size: 2rem;
-    font-weight: 400; /* Serif часто краще виглядає тоншим */
+.steps-title {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    color: #FFD1DC;
     margin-bottom: 50px;
+    position: relative;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.steps-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #FFD1DC, #C0985A);
+    margin: 20px auto 0;
+    border-radius: 2px;
 }
 
 .steps-container {
-    display: flex;
-    flex-direction: column; /* Вертикально на мобільному */
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
 }
 
+/* GLASSMORPHISM КАРТКА */
 .step-card {
-    max-width: 350px;
-    margin: 0 auto;
+    background: linear-gradient(
+        135deg,
+        rgba(137, 11, 11, 0.3),
+        rgba(75, 0, 130, 0.3),
+        rgba(44, 46, 90, 0.3)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 20px;
+    padding: 32px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.step-card:hover::before {
+    opacity: 1;
+}
+
+.step-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(192, 152, 90, 0.2);
+    border-color: rgba(255, 209, 220, 0.4);
 }
 
 .step-icon {
     width: 60px;
     height: 60px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    border: 2px solid var(--color-fuchsia);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0 auto 20px;
+    color: #FFD1DC;
+    stroke-width: 1.8;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
 }
 
-.icon {
-    width: 30px !important; /* Гарантуємо, що розмір іконок застосовано */
-    height: 30px !important;
-    color: var(--color-fuchsia) !important; /* Гарантуємо, що колір іконок застосовано */
+.step-card:hover .step-icon {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .step-title {
-    font-family: var(--font-sans); /* Чистий Sans-Serif для кроків */
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    font-family: 'Inter', sans-serif;
 }
 
-.step-description {
-    font-family: var(--font-sans);
-    color: var(--color-dark-grey);
+.step-text {
+    font-size: 1rem;
+    color: #f0f0f0;
+    line-height: 1.7;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Адаптація для Десктопа */
-@media (min-width: 992px) {
-    .section-title {
-        font-size: 3rem;
-    }
+.accent {
+    color: #FFD1DC;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ======================================== */
+/* АДАПТИВНІСТЬ */
+/* ======================================== */
+@media (max-width: 992px) {
     .steps-container {
-        flex-direction: row; /* Горизонтально на десктопі */
-        justify-content: space-around;
+        grid-template-columns: 1fr;
         gap: 20px;
-        padding: 0 50px;
+    }
+    
+    .steps-title {
+        font-size: 2rem;
+    }
+    
+    .step-card {
+        padding: 28px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .steps-title {
+        font-size: 1.8rem;
+    }
+    
+    .step-card {
+        padding: 24px 16px;
+    }
+    
+    .step-icon {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -1567,6 +1646,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ========================================================================= */
+
 
 
 
