@@ -1251,10 +1251,7 @@ input[type="range"]::-moz-range-thumb {
 /* 11. БЛОК "ПРО НАС" - ЧИСТИЙ + ТРЕНДОВИЙ 2025 */
 /* ========================================================================= */
 /* ======================================== */
-/* ОРГАНІЗАТОР — ОКСАМИТОВА НІЧ (BLUEMORPHISM) */
-/* ======================================== */
-/* ======================================== */
-/* ОРГАНІЗАТОР — ОКСАМИТОВА НІЧ (BLUEMORPHISM) */
+/* ОРГАНІЗАТОР — ФІНАЛЬНИЙ ТЕМНИЙ BLUEMORPHISM */
 /* ======================================== */
 .organizer-section {
     max-width: 1000px;
@@ -1263,26 +1260,23 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .organizer-container {
-    /* ТРИКОЛІРНИЙ НЕЙТРАЛЬНИЙ ГРАДІЄНТ (ОКСАМИТОВА НІЧ) */
+    /* ТЕМНИЙ ТРИКОЛІРНИЙ ГРАДІЄНТ (LUXURY DARK) */
     background: linear-gradient(
         135deg,
-        rgba(80, 80, 80, 0.55), /* Сірий Графіт */
-        rgba(30, 0, 60, 0.45), /* Сапфіровий Відблиск */
-        rgba(180, 80, 20, 0.35) /* Мідний Амбер (Теплота) */
+        rgba(80, 10, 10, 0.85),     /* Глибокий Бордовий (Основа) */
+        rgba(30, 0, 45, 0.75),      /* Нічний Пурпур (Глибина) */
+        rgba(100, 50, 20, 0.65)     /* Теплий Коричневий (Акцент) */
     );
     
     /* BLUEMORPHISM */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     
-    /* ВИДАЛЕНО background-color ФОЛБЕК - ГРАДІЄНТ Є ФОЛБЕКОМ */
-    /* ВИДАЛЕНО border: 1.5px solid rgba(253, 216, 170, 0.3); - спрощення */
-    
     border-radius: 32px;
     padding: 68px 56px;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.5), /* Глибина */
-        0 0 32px rgba(253, 216, 170, 0.18); /* Мерехтіння */
+        0 0 32px rgba(253, 216, 170, 0.25); /* Мерехтіння */
     position: relative;
     overflow: hidden;
 }
@@ -1342,11 +1336,11 @@ input[type="range"]::-moz-range-thumb {
 .organizer-name {
     font-family: var(--font-serif);
     font-size: 2.5rem;
-    /* КОРЕКЦІЯ КОНТРАСТУ - ТЕМНИЙ ТЕКСТ НА СВІТЛОМУ ФОНІ */
-    color: #330000; 
+    /* КОНТРАСТ: СВІТЛИЙ ТЕКСТ НА ТЕМНОМУ ФОНІ */
+    color: #FFFFFF; 
     margin: 0 0 14px 0;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 .organizer-slogan {
@@ -1390,8 +1384,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .service-title {
-    /* КОРЕКЦІЯ КОНТРАСТУ - ТЕМНИЙ ТЕКСТ НА СВІТЛОМУ ФОНІ */
-    color: #330000; 
+    /* КОНТРАСТ: СВІТЛИЙ ТЕКСТ НА ТЕМНОМУ ФОНІ */
+    color: #FFFFFF; 
     font-size: 1.14rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
@@ -1399,7 +1393,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ======================================== */
-/* АДАПТИВНІСТЬ + WCAG AA */
+/* АДАПТИВНІСТЬ */
 /* ======================================== */
 @media (max-width: 768px) {
     .organizer-header {
@@ -1705,6 +1699,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ========================================================================= */
+
 
 
 
