@@ -1251,7 +1251,7 @@ input[type="range"]::-moz-range-thumb {
 /* 11. БЛОК "ПРО НАС" - ЧИСТИЙ + ТРЕНДОВИЙ 2025 */
 /* ========================================================================= */
 /* ======================================== */
-/* СЕКЦІЯ: ОРГАНІЗАТОР — ПРЕМІУМ GLASSMORPHISM */
+/* ОРГАНІЗАТОР — BLUEMORPHISM + КОНТРАСТ */
 /* ======================================== */
 .organizer-section {
     max-width: 1000px;
@@ -1260,37 +1260,45 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .organizer-container {
+    /* Основний фон — напівпрозорий теплий */
     background: linear-gradient(
         135deg,
-        rgba(137, 11, 11, 0.25),
-        rgba(75, 0, 130, 0.25),
-        rgba(44, 46, 90, 0.25)
+        rgba(137, 11, 11, 0.82),
+        rgba(100, 50, 80, 0.78),
+        rgba(80, 30, 70, 0.75)
     );
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 24px;
-    padding: 48px 40px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    /* Bluemorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Фолбек для старих браузерів */
+    background-color: rgba(100, 40, 70, 0.85);
+    
+    border-radius: 28px;
+    padding: 56px 48px;
+    border: 1px solid rgba(183, 110, 121, 0.25);
+    box-shadow: 
+        0 16px 48px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(183, 110, 121, 0.15);
     position: relative;
     overflow: hidden;
 }
 
+/* М'який внутрішній градієнт */
 .organizer-container::before {
     content: '';
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: radial-gradient(circle at 30% 30%, rgba(183, 110, 121, 0.15), transparent 70%);
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 60%);
     pointer-events: none;
 }
 
-/* HEADER: Фото + Ім'я + Слоган */
+/* HEADER */
 .organizer-header {
     display: flex;
     align-items: center;
-    gap: 32px;
-    margin-bottom: 48px;
+    gap: 36px;
+    margin-bottom: 60px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -1300,18 +1308,18 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .organizer-photo {
-    width: 140px;
-    height: 140px;
+    width: 148px;
+    height: 148px;
     object-fit: cover;
-    border-radius: 20px;
-    border: 3px solid #B76E79;
-    box-shadow: 0 8px 24px rgba(183, 110, 121, 0.3);
+    border-radius: 24px;
+    border: 2.5px solid #B76E79;
+    box-shadow: 0 10px 28px rgba(183, 110, 121, 0.35);
     transition: all 0.4s ease;
 }
 
 .organizer-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 32px rgba(183, 110, 121, 0.4);
+    transform: scale(1.06) translateY(-4px);
+    box-shadow: 0 16px 40px rgba(183, 110, 121, 0.45);
 }
 
 .organizer-info {
@@ -1322,66 +1330,68 @@ input[type="range"]::-moz-range-thumb {
 
 .organizer-name {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     color: #FFFFFF;
-    margin: 0 0 8px 0;
+    margin: 0 0 10px 0;
     font-weight: 600;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    text-shadow: 0 2px 6px rgba(0,0,0,0.5);
 }
 
 .organizer-slogan {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: #B76E79;
     margin: 0;
     font-weight: 300;
     font-style: italic;
-    line-height: 1.5;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
-/* ПОСЛУГИ — GRID */
+/* ПОСЛУГИ — ЗБІЛЬШЕНИЙ SPACING */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 20px;
+    gap: 32px; /* ЗБІЛЬШЕНО */
+    margin-top: 28px;
 }
 
 .service-item {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 8px 0;
     transition: transform 0.3s ease;
 }
 
 .service-item:hover {
-    transform: translateX(8px);
+    transform: translateX(10px);
 }
 
 .service-icon {
     color: #B76E79;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .service-title {
     color: #FFFFFF;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
-    line-height: 1.5;
+    line-height: 1.55;
 }
 
 /* ======================================== */
-/* АДАПТИВНІСТЬ */
+/* АДАПТИВНІСТЬ + КОНТРАСТ */
 /* ======================================== */
 @media (max-width: 768px) {
     .organizer-header {
         flex-direction: column;
         text-align: center;
-        gap: 24px;
+        gap: 28px;
+        margin-bottom: 48px;
     }
     
     .organizer-info {
@@ -1389,38 +1399,43 @@ input[type="range"]::-moz-range-thumb {
     }
     
     .organizer-photo {
-        width: 120px;
-        height: 120px;
+        width: 128px;
+        height: 128px;
     }
     
     .services-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 28px;
     }
     
     .organizer-name {
-        font-size: 1.9rem;
+        font-size: 2rem;
     }
     
     .organizer-container {
-        padding: 36px 24px;
+        padding: 40px 28px;
         margin: 80px 15px;
+        border-radius: 24px;
     }
 }
 
 @media (max-width: 480px) {
     .organizer-name {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
     }
     
     .organizer-slogan {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
     
     .service-title {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
+    
+    .services-grid {
+        gap: 24px;
     }
+}
 
 
 /* ========================================================================= */
@@ -1677,6 +1692,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ========================================================================= */
+
 
 
 
