@@ -1549,9 +1549,11 @@ input[type="range"]::-moz-range-thumb {
 }
 /* ========================================================================= */
 /* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW */
+/* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW (ФІНАЛЬНИЙ ШОКОЛАД/ЗОЛОТО) */
 /* ========================================================================= */
 .footer-section {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    /* ФОН: ГЛИБОКИЙ КОРИЧНЕВИЙ ШОКОЛАД (МАЙЖЕ ЧОРНИЙ З ТЕПЛОМ) */
+    background: linear-gradient(135deg, #150606 0%, #200a0a 50%, #150606 100%);
     color: #fff;
     padding: 80px 20px 50px;
     position: relative;
@@ -1565,7 +1567,8 @@ input[type="range"]::-moz-range-thumb {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.3), transparent);
+    /* НЕОНОВА ЛІНІЯ: ЗОЛОТО */
+    background: linear-gradient(90deg, transparent, rgba(253, 216, 170, 0.5), transparent);
 }
 
 .footer-content {
@@ -1582,7 +1585,8 @@ input[type="range"]::-moz-range-thumb {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(45deg, #e91e63, #9c27b0, #f06292);
+    /* ГРАДІЄНТ ЛОГОТИПУ: ЗОЛОТО-АМБЕР */
+    background: linear-gradient(45deg, #FDD8AA, #B8860B, #FFD700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -1647,18 +1651,23 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .social-btn:hover {
-    border-color: rgba(137, 11, 11, 0.5);      /* #890B0B */
-    background: rgba(137, 11, 11, 0.1);
+    /* HOVER ЕФЕКТ: ЗОЛОТЕ СЯЙВО */
+    border-color: rgba(253, 216, 170, 0.5); /* FDD8AA */ 
+    background: rgba(253, 216, 170, 0.08); 
     box-shadow: 
-        0 20px 40px rgba(137, 11, 11, 0.3),
-        0 0 0 1px rgba(137, 11, 11, 0.5);
+        0 20px 40px rgba(253, 216, 170, 0.25),
+        0 0 0 1px rgba(253, 216, 170, 0.6);
 }
 
-/* Кожна кнопка */
-.social-btn.instagram:hover { box-shadow: 0 20px 40px rgba(137, 11, 11, 0.4); }
-.social-btn.telegram:hover  { box-shadow: 0 20px 40px rgba(137, 11, 11, 0.4); }
-.social-btn.tiktok:hover    { box-shadow: 0 20px 40px rgba(137, 11, 11, 0.4); }
-.social-btn.phone:hover     { box-shadow: 0 20px 40px rgba(137, 11, 11, 0.4); }
+/* Кожна кнопка - підсилення золотого сяйва */
+.social-btn.instagram:hover,
+.social-btn.telegram:hover,
+.social-btn.tiktok:hover,
+.social-btn.phone:hover {
+    box-shadow: 
+        0 20px 40px rgba(253, 216, 170, 0.35),
+        0 0 0 1px rgba(253, 216, 170, 0.6);
+}
 
 .footer-legal {
     padding-top: 40px;
@@ -1672,14 +1681,16 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .footer-legal a {
-    color: #e91e63;
+    /* КОЛІР ПОСИЛАНЬ: ЗОЛОТО */
+    color: #FDD8AA; 
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .footer-legal a:hover {
-    color: #f06292;
-    text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+    /* HOVER ПОСИЛАНЬ: ЯСКРАВЕ ЗОЛОТО */
+    color: #FFD700; 
+    text-shadow: 0 0 10px rgba(253, 216, 170, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -1698,7 +1709,17 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 
+@media (max-width: 480px) {
+    .footer-logo {
+        font-size: 1.8rem;
+    }
+    
+    .footer-brand p {
+        font-size: 1rem;
+    }
+}
 /* ========================================================================= */
+
 
 
 
