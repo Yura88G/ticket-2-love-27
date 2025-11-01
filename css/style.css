@@ -485,52 +485,7 @@ button, input, textarea, .main-nav a, .logo {
     }
   
 /* ========================================================================= */
-/* ВИПРАВЛЕННЯ: ФОН + КНОПКИ — БЕЗ ВТРАТИ ІНШОГО */
-/* ========================================================================= */
 
-/* Фон на hero-секцію (правильний шлях + не плаває) */
-.hero-section::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('assets/img/Fon.jpg') center center / cover no-repeat;
-  background-attachment: fixed;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* На мобілці — без "плавання" при скролі */
-@media (max-width: 768px) {
-  .hero-section::before {
-    background-attachment: scroll;
-  }
-}
-
-/* Ховаємо старий фон */
-.hero-background {
-  display: none !important;
-}
-
-/* Кнопки — точно по центру */
-.selection-block {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-/* Мобілка: вертикально + по центру */
-@media (max-width: 480px) {
-  .selection-block {
-    flex-direction: column;
-    align-items: center;
-  }
-  .cta-button {
-    width: 100%;
-    max-width: 300px;
-    margin: 8px 0;
-  }
-}
 /* ========================================================================= */
 /* 5. МЕДІА-ЗАПИТИ (АДАПТАЦІЯ ДЛЯ ДЕСКТОПА - MOBILE FIRST) */
 /* ========================================================================= */
@@ -1774,6 +1729,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ========================================================================= */
+
 
 
 
