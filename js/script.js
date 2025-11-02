@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openMenu = () => {
         mainNav.classList.add('is-open');
         navToggle.setAttribute('aria-expanded', 'true');
-        body.classList.add('menu-open');
+        body.classList.add('menu-open'); // Блокує скролінг фону
     };
 
     const closeMenu = () => {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Закриття при виборі пункту
+    // Закриття при виборі пункту меню
     mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             closeMenu();
@@ -382,6 +382,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         }
     });
 });
+
 
 
 
