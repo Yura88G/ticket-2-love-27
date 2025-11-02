@@ -444,9 +444,8 @@ body.menu-open {
   }
 }
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
-
 /* ========================================================================= */
-/* 4.1 SELECTION СЕКЦІЯ — КНОПКИ ПО ЦЕНТРУ НА МОБІЛЦІ */
+/* 4.1 SELECTION СЕКЦІЯ — КНОПКИ ПО ЦЕНТРУ, ОДНАКОВА ШИРИНА */
 /* ========================================================================= */
 .selection-section {
     padding: 60px 20px;
@@ -459,31 +458,23 @@ body.menu-open {
 
 .selection-block {
     display: flex;
-    flex-direction: column;     /* Завжди колонка на мобілці */
-    align-items: center;         /* ГОРИЗОНТАЛЬНЕ ЦЕНТРУВАННЯ */
-    justify-content: center;     /* ВЕРТИКАЛЬНЕ */
-    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;     /* ГОРИЗОНТАЛЬНЕ ЦЕНТРУВАННЯ */
+    align-items: center;
+    gap: 15px;
+    max-width: 500px;            /* Контейнер не ширший за 500px */
     width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
+    margin: 0 auto;              /* ЦЕНТРУВАННЯ В БАТЬКІВСЬКОМУ */
     opacity: 0;
-    animation: fadeIn 0.6s ease-out 3.2s forwards; /* ТВОЯ ЗАТРИМКА */
+    animation: fadeIn 0.6s ease-out 3.2s forwards;
     text-align: center;
-}
-
-/* Десктоп: кнопки поруч */
-@media (min-width: 481px) {
-    .selection-block {
-        flex-direction: row;
-        gap: 15px;
-    }
 }
 
 .cta-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 28px;
+    padding: 14px 32px;
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
@@ -495,9 +486,9 @@ body.menu-open {
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
     min-height: 50px;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
+    /* ФІКСОВАНА ШИРИНА */
+    width: 220px;                /* ОДНАКОВА ШИРИНА */
+    flex: none;                  /* НЕ РОЗТЯГУЄТЬСЯ */
 }
 
 .cta-button::before {
@@ -538,20 +529,20 @@ body.menu-open {
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(137, 11, 11, 0.3);
 }
+
 /* ========================================================================= */
-/* МОБІЛЬНА АДАПТАЦІЯ — КНОПКИ ПО ЦЕНТРУ */
+/* МОБІЛЬНА ВЕРСІЯ — КНОПКИ ОДНА ПІД ОДНОЮ, ПО ЦЕНТРУ */
 /* ========================================================================= */
 @media (max-width: 480px) {
     .selection-block {
         flex-direction: column;
         gap: 12px;
-        padding: 0 10px;
+        padding: 0 15px;
     }
     .cta-button {
         width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        flex: none;
+        max-width: 280px;        /* НЕ БІЛЬШЕ 280px */
+        margin: 0 auto;          /* ЦЕНТРУВАННЯ */
     }
 }
 /* ========================================================================= */
@@ -1770,6 +1761,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
