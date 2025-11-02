@@ -198,27 +198,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 5. FAQ АКОРДЕОН
     // =========================================================================
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const faqItem = question.parentElement;
-            const isActive = faqItem.classList.contains('active');
+// =========================================================================
+// 5. FAQ АКОРДЕОН — ПРАЦЮЄ 100%
+// =========================================================================
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
 
-            // Закриваємо всі
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            // Відкриваємо поточний
-            if (!isActive) {
-                faqItem.classList.add('active');
-            }
+        // Закриваємо всі інші
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.classList.remove('active');
         });
-    });
 
-    // =========================================================================
-        // =========================================================================
-    // 6. AOS ІНІЦІАЛІЗАЦІЯ
-    // =========================================================================
+        // Відкриваємо поточний (якщо не був активний)
+        if (!isActive) {
+            faqItem.classList.add('active');
+        }
+    });
+});
+
+// =========================================================================
+//  AOS ІНІЦІАЛІЗАЦІЯ — З ПЕРЕВІРКОЮ ТА ЛОГОМ
+// =========================================================================
+document.addEventListener('DOMContentLoaded', function() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
@@ -226,12 +229,16 @@ document.addEventListener('DOMContentLoaded', () => {
             once: true,
             offset: 100
         });
+        console.log('AOS успішно ініціалізовано!');
+    } else {
+        console.error('ПОМИЛКА: AOS не завантажився! Перевір підключення.');
     }
-
+});
     // =========================================================================
     // 7. ОНОВЛЕННЯ ЛІЧИЛЬНИКА ПРИ ЗАВАНТАЖЕННІ
     // =========================================================================
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
