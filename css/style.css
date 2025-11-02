@@ -445,7 +445,7 @@ body.menu-open {
 }
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
 /* ========================================================================= */
-/* 4.1 SELECTION СЕКЦІЯ — КНОПКИ ПО ЦЕНТРУ, ОДНАКОВА ШИРИНА */
+/* 4.1 SELECTION СЕКЦІЯ — КНОПКИ ПО ЦЕНТРУ, БЕЗ ПОШКОДЖЕНЬ ХЕДЕРА */
 /* ========================================================================= */
 .selection-section {
     padding: 60px 20px;
@@ -453,28 +453,22 @@ body.menu-open {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
 }
 
 .selection-block {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;     /* ГОРИЗОНТАЛЬНЕ ЦЕНТРУВАННЯ */
-    align-items: center;
+    justify-content: center;
     gap: 15px;
-    max-width: 500px;            /* Контейнер не ширший за 500px */
-    width: 100%;
-    margin: 0 auto;              /* ЦЕНТРУВАННЯ В БАТЬКІВСЬКОМУ */
     opacity: 0;
     animation: fadeIn 0.6s ease-out 3.2s forwards;
-    text-align: center;
 }
 
 .cta-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 32px;
+    padding: 14px 28px;
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
@@ -486,9 +480,7 @@ body.menu-open {
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
     min-height: 50px;
-    /* ФІКСОВАНА ШИРИНА */
-    width: 220px;                /* ОДНАКОВА ШИРИНА */
-    flex: none;                  /* НЕ РОЗТЯГУЄТЬСЯ */
+    width: 220px;
 }
 
 .cta-button::before {
@@ -530,6 +522,20 @@ body.menu-open {
     box-shadow: 0 10px 30px rgba(137, 11, 11, 0.3);
 }
 
+/* ========================================================================= */
+/* МОБІЛЬНА АДАПТАЦІЯ — КНОПКИ ПО ЦЕНТРУ, ХЕДЕР НЕ ЗСУВАЄТЬСЯ */
+/* ========================================================================= */
+@media (max-width: 480px) {
+    .selection-block {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    .cta-button {
+        width: 100%;
+        max-width: 260px;
+    }
+}
 /* ========================================================================= */
 /* МОБІЛЬНА ВЕРСІЯ — КНОПКИ ОДНА ПІД ОДНОЮ, ПО ЦЕНТРУ */
 /* ========================================================================= */
@@ -1761,6 +1767,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
