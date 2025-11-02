@@ -62,126 +62,143 @@ button, input, textarea, .main-nav a, .logo {
 
 /* ========================================================================= */
 /* 3. HEADER & НАВІГАЦІЯ */
+/* КОМПЛЕКСНЕ ВИПРАВЛЕННЯ: МОБІЛЬНЕ МЕНЮ + АДАПТИВНІСТЬ + АНІМАЦІЯ */
+
+/* 1. ХЕДЕР: фіксований, центрований, без перетину */
 .main-header {
-    display: flex;
-    justify-content: flex-start; /* Логотип і навігація зліва */
-    align-items: center;
-    padding: 15px 30px; /* Відступи по краях */
-    background: rgba(255, 255, 255, 0.1); /* Легкий оверлей для glassmorphism */
-    backdrop-filter: blur(10px); /* Ефект розмиття */
-    position: fixed; /* Фіксований хедер */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Підвищено для видимості при скролінгу */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тінь для видимості */
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Логотип ліворуч, меню/кнопка праворуч */
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Логотип: клікабельний, не перекривається */
+.logo-link {
+    display: block;
+    flex-shrink: 0;
 }
 
 .logo {
-    height: 40px; /* Зменшений розмір логотипу */
+    height: 38px;
     width: auto;
-    margin-right: 30px; /* Відступ між логотипом і навігацією */
-    transition: transform var(--transition-speed);
+    transition: transform 0.3s ease;
 }
 
-.logo:hover {
-    transform: scale(1.1); /* Плавне збільшення при наведенні */
+.logo-link:hover .logo {
+    transform: scale(1.08);
 }
 
+/* Навігація: прихована на мобілці, плавне відкриття */
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.main-nav a {
+.main-nav a,
+.main-nav button {
+    color: #fff;
     font-weight: 500;
-    color: #FFFFFF;
+    font-size: 0.95rem;
     text-decoration: none;
-    transition: color var(--transition-speed), text-shadow var(--transition-speed);
-    font-size: 1rem;
+    padding: 6px 0;
+    white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-.main-nav a:hover {
-    color: #FFFFFF;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Ефект при наведенні */
+.main-nav a:hover,
+.favorites-button:hover {
+    color: #FDD8AA;
+    text-shadow: 0 0 8px rgba(253, 216, 170, 0.4);
 }
 
+/* Кнопка гамбургера */
 .nav-toggle {
     display: none;
     background: none;
     border: none;
     cursor: pointer;
-    margin-left: auto; /* Пушить кнопку праворуч */
-    padding: 10px 15px; /* Відступи всередині кнопки */
-    margin-right: 20px; /* Відступ від правого краю */
+    padding: 10px;
+    z-index: 1001;
     position: relative;
-    z-index: 101;
 }
 
 .nav-toggle span {
     display: block;
-    width: 25px;
-    height: 3px;
-    background: #FFFFFF;
-    position: absolute;
-    left: 0;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
 }
 
-.nav-toggle span:nth-child(1) { top: 0; }
-.nav-toggle span:nth-child(2) { top: 8px; }
-.nav-toggle span:nth-child(3) { top: 16px; }
-
-.nav-toggle:hover span {
-    background: #E0E0E0; /* Зміна кольору при наведенні */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
 }
 
-.nav-toggle.is-open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.nav-toggle.is-open span:nth-child(2) {
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
     opacity: 0;
 }
 
-.nav-toggle.is-open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Мобільна версія */
 @media (max-width: 768px) {
     .main-nav {
-        display: none;
         position: fixed;
         top: 0;
-        left: -100%;
-        width: 80%;
-        max-width: 300px;
+        right: -100%;
+        width: 280px;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.9); /* Темний фон для меню */
+        background: rgba(21, 6, 6, 0.97);
+        backdrop-filter: blur(15px);
         flex-direction: column;
-        padding: 60px 20px;
-        box-shadow: 5px 0 10px rgba(0, 0, 0, 0.3);
-        transition: left 0.4s ease-in-out; /* Плавніша анімація */
+        justify-content: flex-start;
+        align-items: center;
+        padding: 100px 20px 40px;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .main-nav.is-open {
-        display: flex;
-        left: 0;
+        right: 0;
     }
 
-    .main-nav a {
-        margin: 15px 0;
-        font-size: 1.2rem;
-        color: #FFFFFF;
+    .main-nav a,
+    .main-nav button {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .main-nav a:hover {
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    .main-nav a:last-child,
+    .main-nav button {
+        border-bottom: none;
     }
 
     .nav-toggle {
         display: block;
+    }
+
+    /* Фікс: фон не "стрибає" при відкритті меню */
+    body.menu-open {
+        overflow: hidden;
     }
 }
 /* ========================================================================= */
@@ -1725,3 +1742,4 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
