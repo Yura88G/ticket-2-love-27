@@ -23,18 +23,21 @@ const observer = new IntersectionObserver((entries, observer) => {
 fadeInElements.forEach(el => observer.observe(el));
 
 // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
-// КОМПЛЕКСНЕ ВИПРАВЛЕННЯ: МОБІЛЬНЕ МЕНЮ (JS)
+// КОМПЛЕКСНЕ ВИПРАВЛЕННЯ: МОБІЛЬНЕ МЕНЮ (ПРАВИЛЬНА ВЕРСІЯ)
 document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('nav-toggle');
     const mainNav = document.getElementById('main-nav');
     const body = document.body;
 
-    if (!navToggle || !mainNav) return;
+    if (!navToggle || !mainNav) {
+        console.warn('Меню не знайдено: перевір id="nav-toggle" і id="main-nav"');
+        return;
+    }
 
     const openMenu = () => {
         mainNav.classList.add('is-open');
         navToggle.setAttribute('aria-expanded', 'true');
-        body.classList.add('menu-open'); // Блокує скролінг фону
+        body.classList.add('menu-open');
     };
 
     const closeMenu = () => {
@@ -43,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.remove('menu-open');
     };
 
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         if (mainNav.classList.contains('is-open')) {
             closeMenu();
         } else {
@@ -53,12 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Закриття при кліку поза меню
     document.addEventListener('click', (e) => {
-        if (!mainNav.contains(e.target) && !navToggle.contains(e.target) && mainNav.classList.contains('is-open')) {
+        if (mainNav.classList.contains('is-open') && 
+            !mainNav.contains(e.target) && 
+            !navToggle.contains(e.target)) {
             closeMenu();
         }
     });
 
-    // Закриття при виборі пункту меню
+    // Закриття при кліку на посилання
     mainNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             closeMenu();
@@ -382,6 +388,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         }
     });
 });
+
 
 
 
