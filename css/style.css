@@ -342,7 +342,7 @@ body.menu-open {
     }
 }
 /* ========================================================================= */
-/* 4.1.1 HERO СЕКЦІЯ */
+/* 4.1.1 заголовки ефекти HERO СЕКЦІЯ */
 /* ========================================================================= */
 
 .hero-section {
@@ -443,8 +443,8 @@ body.menu-open {
     font-size: calc(2.2rem + 1vw);
   }
 }
-/* 4.1 SELECTION СЕКЦІЯ */
-/* ========================================================================= */
+/* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
+
 .selection-section {
     padding: 60px 20px;
     background: transparent;
@@ -452,17 +452,25 @@ body.menu-open {
     justify-content: center;
     align-items: center;
 }
+
 .selection-block {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
-    position: relative;
     flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     opacity: 0;
-    animation: fadeIn 0.6s ease-out 3.5s forwards;
+    animation: fadeIn 0.6s ease-out 1.2s forwards; /* ШВИДШЕ: 1.2s замість 3.5s */
+    text-align: center;
 }
+
 .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     padding: 14px 28px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -475,8 +483,10 @@ body.menu-open {
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
     min-width: 140px;
-    text-align: center;
+    flex: 1;
+    min-height: 50px;
 }
+
 .cta-button::before {
     content: "";
     position: absolute;
@@ -487,12 +497,11 @@ body.menu-open {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
     z-index: -1;
 }
-.cta-him {
+
+.cta-him, .cta-her {
     background: var(--color-accent-gradient);
 }
-.cta-her {
-    background: var(--color-accent-gradient);
-}
+
 .cta-button::after {
     content: "";
     position: absolute;
@@ -506,22 +515,31 @@ body.menu-open {
     transition: width 0.6s ease, height 0.6s ease;
     z-index: 1;
 }
+
 .cta-button:hover::after {
     width: 150%;
     height: 150%;
 }
+
 .cta-button:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(137, 11, 11, 0.3);
 }
+
+/* ========================================================================= */
+/* МОБІЛЬНА АДАПТАЦІЯ — КНОПКИ ПО ЦЕНТРУ */
+/* ========================================================================= */
 @media (max-width: 480px) {
     .selection-block {
         flex-direction: column;
+        gap: 12px;
+        padding: 0 10px;
     }
     .cta-button {
         width: 100%;
-        min-width: 0;
-        margin: 10px 0;
+        max-width: 300px;
+        margin: 0 auto;
+        flex: none;
     }
 }
 /* ========================================================================= */
@@ -1740,6 +1758,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
