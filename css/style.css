@@ -187,9 +187,11 @@ button, input, textarea, .main-nav a, .logo {
 }
 
     /* Фікс: фон не "стрибає" при відкритті меню */
-    body.menu-open {
-        overflow: hidden;
-    }
+   /* ФІКС: фон не стрибає при відкритті меню */
+body.menu-open {
+    overflow: hidden;
+    padding-right: 0 !important; /* Запобігає стрибку через скролбар */
+}
 }
 /* ========================================================================= */
 /* 4. HERO СЕКЦІЯ (ОНОВЛЕНО) */
@@ -1732,6 +1734,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
 
 
 
