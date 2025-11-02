@@ -44,7 +44,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+// =========================================================================
+    // 1.1.1 ПЛАВНИЙ СКРОЛ ДО СЕКЦІЙ ПРИ КЛІКУ НА МЕНЮ
+    // =========================================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#' || href === '#!') return; // Пропускаємо порожні
 
+            e.preventDefault();
+            const target = document.querySelector(href);
+
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                // Закриваємо мобільне меню після кліку
+                if (mainNav && mainNav.classList.contains('is-open')) {
+                    mainNav.classList.remove('is-open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    body.classList.remove('menu-open');
+                }
+            }
+        });
+    });
     // =========================================================================
     // 2. ОНОВЛЕННЯ ЛІЧИЛЬНИКА ОБРАНИХ
     // =========================================================================
@@ -240,5 +265,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
