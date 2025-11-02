@@ -26,30 +26,28 @@
 }========================================================================= */
 /* 2. БАЗОВИЙ СКИН (RESET & FONT) */
 /* ========================================================================= */
+/* ========================================================================= */
+/* 2. БАЗОВИЙ СКИН — ФОН ПРАЦЮЄ */
+/* ========================================================================= */
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-sans);
-    background-color: #0a0a0a;
-    background-image: url('assets/img/fon.jpg');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background: #0a0a0a url('assets/img/fon.jpg') center/cover no-repeat fixed;
     color: var(--color-dark);
     overflow-x: hidden;
     min-height: 100vh;
     scroll-behavior: smooth;
 }
 
-/* Мобілка — фон скролиться */
 @media (max-width: 768px) {
     body {
         background-attachment: scroll;
+        background-position: center center !important;
+        background-size: cover !important;
     }
 }
 
-/* Меню — фон не стрибає */
 body.menu-open {
     overflow: hidden;
     padding-right: 0 !important;
@@ -1721,6 +1719,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
