@@ -25,33 +25,31 @@
     --shadow-brand: 0 0 5px rgba(137, 11, 11, 0.2);
 }========================================================================= */
 /* 2. БАЗОВИЙ СКИН (RESET & FONT) */
-
-/* ========================================================================= */
-/* 2. БАЗОВИЙ СКИН — ФОН 100% ПРАЦЮЄ */
 /* ========================================================================= */
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-sans);
-    background: #0a0a0a url('../assets/img/Fon.jpg') center center / cover no-repeat fixed;
+    background-color: #0a0a0a;
+    background-image: url('assets/img/Fon.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--color-dark);
     overflow-x: hidden;
     min-height: 100vh;
-    
-    /* Плавний скролінг */
     scroll-behavior: smooth;
 }
 
-/* ФІКС: на мобілці — фон скролиться */
+/* Мобілка — фон скролиться */
 @media (max-width: 768px) {
     body {
         background-attachment: scroll;
-        background-position: center center;
-        background-size: cover;
     }
 }
 
-/* ФІКС: при відкритті меню */
+/* Меню — фон не стрибає */
 body.menu-open {
     overflow: hidden;
     padding-right: 0 !important;
@@ -1723,6 +1721,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
