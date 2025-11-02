@@ -1479,7 +1479,12 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 /* 3.1. FAQ — Часті питання */
 /* ======================================== */
+/* ФІКС: FAQ ВИДИМИЙ НАЗАВЖДИ */
+/* ======================================== */
 .faq-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
     max-width: 900px;
     margin: 80px auto;
     padding: 0 20px;
@@ -1722,6 +1727,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
