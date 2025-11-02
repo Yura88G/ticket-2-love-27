@@ -62,6 +62,7 @@ button, input, textarea, .main-nav a, .logo {
 
 /* ========================================================================= */
 /* 3. HEADER & НАВІГАЦІЯ */
+/* 3. HEADER & НАВІГАЦІЯ */
 /* КОМПЛЕКСНЕ ВИПРАВЛЕННЯ: МОБІЛЬНЕ МЕНЮ + АДАПТИВНІСТЬ + АНІМАЦІЯ */
 
 /* 1. ХЕДЕР: фіксований, центрований, без перетину */
@@ -125,7 +126,7 @@ button, input, textarea, .main-nav a, .logo {
 
 /* Кнопка гамбургера */
 .nav-toggle {
-    display: none;
+    display: none; /* Прихована на десктопі */
     background: none;
     border: none;
     cursor: pointer;
@@ -144,6 +145,7 @@ button, input, textarea, .main-nav a, .logo {
     border-radius: 1px;
 }
 
+/* Анімація хрестика */
 .nav-toggle[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
@@ -158,10 +160,18 @@ button, input, textarea, .main-nav a, .logo {
 
 /* Мобільна версія */
 @media (max-width: 768px) {
+    /* Показуємо кнопку гамбургера */
+    .nav-toggle {
+        display: block;
+        margin-left: auto; /* Відштовхує від лівого краю */
+        margin-right: 8px; /* Відступ від правого краю */
+    }
+
+    /* Меню виїжджає зправа — не штовхає контент */
     .main-nav {
         position: fixed;
         top: 0;
-        right: -100%; /* Виїжджає зправа */
+        right: -100%; /* Початкове положення */
         width: 280px;
         height: 100vh;
         background: rgba(21, 6, 6, 0.97);
@@ -176,22 +186,29 @@ button, input, textarea, .main-nav a, .logo {
     }
 
     .main-nav.is-open {
-        right: 0;
+        right: 0; /* Відкрите положення */
     }
 
-    /* Кнопка гамбургера — відступ від краю */
-    .nav-toggle {
-        margin-left: auto;
-        margin-right: 8px;
+    /* Стилі посилань у мобільному меню */
+    .main-nav a,
+    .main-nav button {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-nav a:last-child,
+    .main-nav button {
+        border-bottom: none;
     }
 }
 
-    /* Фікс: фон не "стрибає" при відкритті меню */
-   /* ФІКС: фон не стрибає при відкритті меню */
+/* ФІКС: фон не "стрибає" при відкритті меню */
 body.menu-open {
-    overflow: hidden;
+    overflow: hidden; /* Блокує скролінг */
     padding-right: 0 !important; /* Запобігає стрибку через скролбар */
-}
 }
 /* ========================================================================= */
 /* 4. HERO СЕКЦІЯ (ОНОВЛЕНО) */
@@ -1734,6 +1751,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
 
 
 
