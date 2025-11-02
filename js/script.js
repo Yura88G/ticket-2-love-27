@@ -23,132 +23,48 @@ const observer = new IntersectionObserver((entries, observer) => {
 fadeInElements.forEach(el => observer.observe(el));
 
 // === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
-// === ЛОГІКА МОБІЛЬНОГО МЕНЮ ===
-// Ця секція управляє кнопкою гамбургера та відкриванням/закриттям навігаційного меню
-const navToggle = document.querySelector('.nav-toggle');
-const mainNav = document.querySelector('.main-nav');
+// КОМПЛЕКСНЕ ВИПРАВЛЕННЯ: МОБІЛЬНЕ МЕНЮ (JS)
+document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    const body = document.body;
 
-if (navToggle && mainNav) {
-    // === ФУНКЦІЯ ЗАКРИТТЯ МЕНЮ ===
-    const closeMenu = () => {
-        mainNav.classList.remove('is-open');
-        navToggle.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        document.removeEventListener('click', closeMenuOnOutsideClick);
+    if (!navToggle || !mainNav) return;
+
+    const openMenu = () => {
+        mainNav.classList.add('is-open');
+        navToggle.setAttribute('aria-expanded', 'true');
+        body.classList.add('menu-open');
     };
 
-    // === КЛІК ПО КНОПЦІ ГАМБУРГЕР ===
-    navToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = !mainNav.classList.contains('is-open');
-        
-        mainNav.classList.toggle('is-open', isOpen);
-        navToggle.classList.toggle('is-open', isOpen);
-        navToggle.setAttribute('aria-expanded', isOpen);
+    const closeMenu = () => {
+        mainNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        body.classList.remove('menu-open');
+    };
 
-        if (isOpen) {
-            document.addEventListener('click', closeMenuOnOutsideClick);
+    navToggle.addEventListener('click', () => {
+        if (mainNav.classList.contains('is-open')) {
+            closeMenu();
         } else {
+            openMenu();
+        }
+    });
+
+    // Закриття при кліку поза меню
+    document.addEventListener('click', (e) => {
+        if (!mainNav.contains(e.target) && !navToggle.contains(e.target) && mainNav.classList.contains('is-open')) {
             closeMenu();
         }
     });
 
-    // === КЛІК ПО ПУНКТУ МЕНЮ (усі <a>) ===
+    // Закриття при виборі пункту
     mainNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); // Зупиняємо перехід
-            const href = link.getAttribute('href');
-
-            // Закриваємо меню
+        link.addEventListener('click', () => {
             closeMenu();
-
-            // Плавний скрол до секції (якщо це якір)
-            if (href && href.startsWith('#') && href !== '#') {
-                const target = document.querySelector(href);
-                if (target) {
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: target.offsetTop - 80, // Відступ під хедер
-                            behavior: 'smooth'
-                        });
-                    }, 300); // Чекаємо, поки меню закриється
-                }
-            }
         });
     });
-
-    // === КЛІК ПОЗА МЕНЮ ===
-    function closeMenuOnOutsideClick(e) {
-        if (!mainNav.contains(e.target) && e.target !== navToggle) {
-            closeMenu();
-        }
-    }
-
-    // === ДОДАЄМО ОБРОБНИК ПІСЛЯ ВІДКРИТТЯ (опціонально, для надійності) ===
-    // Якщо пункти меню додаються динамічно — це не потрібно
-}
-// =========================================================================
-// 💥 НОВА СЕКЦІЯ: ЛОГІКА WOW INTRO АНІМАЦІЇ 💥
-// Керує послідовним запуском анімації заголовків після зникнення логотипу.
-// --- ЛОГІКА WOW INTRO АНІМАЦІЇ (ФІНАЛЬНИЙ ОПТИМАЛЬНИЙ БАЛАНС) ---
-const logoIntro = document.querySelector('.hero-logo-intro');
-const heroTitle = document.querySelector('.hero-title');
-const heroSubtitle = document.querySelector('.hero-subtitle');
-
-// Запускаємо послідовність після 1.5 секунди (коли друк логотипу завершено і контейнер починає зникати).
-setTimeout(() => {
-    // 1. Запускаємо анімацію Головного заголовка (його фактична затримка: 1.8с)
-    if (heroTitle) {
-        heroTitle.classList.add('animate-in'); 
-    }
-
-    // 2. Запускаємо анімацію Підзаголовка (його фактична затримка: 2.4с)
-    if (heroSubtitle) {
-        heroSubtitle.classList.add('animate-in');
-    }
-}, 1500); // Змінено на 1500 мс (1.5 секунди)
-// -------------------------------------------------------------------
-// -------------------------------------------------------------------
-
-console.log("Ticket 2 Love: Проект ініціалізовано.");
-
-// === ФУНКЦІЯ ОНОВЛЕННЯ ЛІЧИЛЬНИКА ОБРАНИХ ===
-// Ця функція оновлює текст кнопок "Обрані" та стан кнопки "Перейти до заявки".
-// Ця функція оновлює текст кнопок "Обрані" та стан кнопки "Перейти до заявки".
-const updateFavoritesCounter = () => {
-    let favorites = [];
-    try {
-        const data = localStorage.getItem('favorites');
-        favorites = data ? JSON.parse(data) : [];
-    } catch (e) {
-        console.warn('localStorage недоступний або пошкоджений:', e);
-        favorites = [];
-    }
-    
-    const count = favorites.length;
-    const favoritesButtons = document.querySelectorAll('.favorites-button');
-    
-    favoritesButtons.forEach(button => {
-        button.textContent = `Обрані (${count})`;
-    });
-    
-           const selectCountSpan = document.getElementById('select-count');
-        if (selectCountSpan) {
-            selectCountSpan.textContent = `(${count}/3)`;
-            const proceedButton = document.getElementById('proceed-to-application');
-            if (proceedButton) {
-                if (count > 0) {
-                    proceedButton.classList.remove('disabled');
-                    proceedButton.removeAttribute('disabled');
-                } else {
-                    proceedButton.classList.add('disabled');
-                    proceedButton.setAttribute('disabled', 'true');
-                }
-            }
-        }
-    }
 });
-
 // =========================================================================
 // 3. ЛОГІКА КАТАЛОГУ (catalogue.html: ФІЛЬТРАЦІЯ, ПАГІНАЦІЯ, HOVER)
 // =========================================================================
@@ -466,6 +382,7 @@ document.querySelectorAll('.faq-question').forEach(question => {
         }
     });
 });
+
 
 
 
