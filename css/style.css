@@ -445,30 +445,42 @@ body.menu-open {
 }
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
 
+/* ========================================================================= */
+/* 4.1 SELECTION СЕКЦІЯ — КНОПКИ ПО ЦЕНТРУ НА МОБІЛЦІ */
+/* ========================================================================= */
 .selection-section {
     padding: 60px 20px;
     background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .selection-block {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;     /* Завжди колонка на мобілці */
+    align-items: center;         /* ГОРИЗОНТАЛЬНЕ ЦЕНТРУВАННЯ */
+    justify-content: center;     /* ВЕРТИКАЛЬНЕ */
+    gap: 12px;
     width: 100%;
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
     opacity: 0;
-    animation: fadeIn 0.6s ease-out 1.2s forwards; /* ШВИДШЕ: 1.2s замість 3.5s */
+    animation: fadeIn 0.6s ease-out 3.2s forwards; /* ТВОЯ ЗАТРИМКА */
     text-align: center;
 }
 
+/* Десктоп: кнопки поруч */
+@media (min-width: 481px) {
+    .selection-block {
+        flex-direction: row;
+        gap: 15px;
+    }
+}
+
 .cta-button {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 14px 28px;
@@ -482,9 +494,10 @@ body.menu-open {
     overflow: hidden;
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
-    min-width: 140px;
-    flex: 1;
     min-height: 50px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 .cta-button::before {
@@ -525,7 +538,6 @@ body.menu-open {
     transform: scale(1.05);
     box-shadow: 0 10px 30px rgba(137, 11, 11, 0.3);
 }
-
 /* ========================================================================= */
 /* МОБІЛЬНА АДАПТАЦІЯ — КНОПКИ ПО ЦЕНТРУ */
 /* ========================================================================= */
@@ -1758,6 +1770,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
