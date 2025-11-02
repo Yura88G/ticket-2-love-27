@@ -28,36 +28,33 @@
 /* ========================================================================= */
 /* 2. БАЗОВИЙ СКИН (RESET & FONT) */
 /* ========================================================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-sans);
-    background: url('../assets/img/Fon.jpg') center/cover no-repeat fixed; /* Глобальний фон на всю сторінку */
+    background: url('../assets/img/Fon.jpg') center center / cover no-repeat;
+    background-attachment: fixed; /* fixed на десктопі — красиво */
     color: var(--color-dark);
-    overflow-x: hidden; /* Запобігання горизонтального скролу */
-    min-height: 100vh; /* Гарантуємо мінімальну висоту */
-    /* Прибрано filter: brightness(0.7) */
+    overflow-x: hidden;
+    min-height: 100vh;
+    
+    /* Плавний скролінг */
+    scroll-behavior: smooth;
 }
 
-a {
-    color: var(--color-fuchsia);
-    text-decoration: none;
-    transition: color var(--transition-speed);
+/* ФІКС: на мобілці fixed ламає фон → перемикаємо на scroll */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* фон скролиться з контентом */
+        background-position: center center;
+        background-size: cover;
+    }
 }
 
-a:hover {
-    color: var(--color-soft-gold);
-}
-
-/* Використовуємо Sans-Serif для функціональних елементів */
-button, input, textarea, .main-nav a, .logo {
-    font-family: var(--font-sans);
+/* ФІКС: при відкритті меню — фон не стрибає */
+body.menu-open {
+    overflow: hidden;
+    padding-right: 0 !important;
 }
 
 /* ========================================================================= */
@@ -1727,6 +1724,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
