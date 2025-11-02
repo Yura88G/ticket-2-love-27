@@ -29,28 +29,36 @@
 /* ========================================================================= */
 /* 2. БАЗОВИЙ СКИН — ФОН ПРАЦЮЄ */
 /* ========================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: var(--font-sans);
-    background: #0a0a0a url('assets/img/fon.jpg') center/cover no-repeat fixed;
+    background: url('../assets/img/fon.jpg') center/cover no-repeat fixed; /* Глобальний фон на всю сторінку */
     color: var(--color-dark);
-    overflow-x: hidden;
-    min-height: 100vh;
-    scroll-behavior: smooth;
+    overflow-x: hidden; /* Запобігання горизонтального скролу */
+    min-height: 100vh; /* Гарантуємо мінімальну висоту */
+    /* Прибрано filter: brightness(0.7) */
 }
 
-@media (max-width: 768px) {
-    body {
-        background-attachment: scroll;
-        background-position: center center !important;
-        background-size: cover !important;
-    }
+a {
+    color: var(--color-fuchsia);
+    text-decoration: none;
+    transition: color var(--transition-speed);
 }
 
-body.menu-open {
-    overflow: hidden;
-    padding-right: 0 !important;
+a:hover {
+    color: var(--color-soft-gold);
+}
+
+/* Використовуємо Sans-Serif для функціональних елементів */
+button, input, textarea, .main-nav a, .logo {
+    font-family: var(--font-sans);
 }
 /* ========================================================================= */
 /* 3. HEADER & НАВІГАЦІЯ */
@@ -1719,6 +1727,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
