@@ -1478,103 +1478,73 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 /* 12.1. СТИЛІ ДЛЯ FAQ — гармоніка (акордеон) */
 /* ======================================== */
+/* 4.1. FAQ — Часті питання */
+/* ======================================== */
 .faq-section {
     max-width: 900px;
     margin: 80px auto;
-    padding: 0 15px;
+    padding: 0 20px;
     text-align: center;
 }
 
 .faq-section h2 {
-    font-family: var(--font-serif);
     font-size: 2.2rem;
-    color: #C0985A;
     margin-bottom: 40px;
-    position: relative;
-}
-
-.faq-section h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: #C0985A;
-    margin: 15px auto 0;
-    border-radius: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .faq-item {
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
     margin-bottom: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(192,152,90,0.15);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .faq-question {
-    padding: 20px 24px;
-    background: rgba(192, 152, 90, 0.15);
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-align: left;
+    padding: 18px 20px;
     cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    text-align: left;
+    color: #fff;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .faq-question::after {
-    content: '▼';
-    font-size: 0.8rem;
-    color: #C0985A;
+    content: '+';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
     transition: transform 0.3s ease;
 }
 
 .faq-item.active .faq-question::after {
-    transform: rotate(180deg);
-}
-
-.faq-question:hover {
-    background: rgba(192, 152, 90, 0.25);
+    content: '−';
 }
 
 .faq-answer {
-    padding: 0 24px;
+    padding: 0 20px;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.4s ease;
-    color: #e0e0e0;
-    font-size: 1rem;
+    color: #ddd;
+    font-size: 0.95rem;
     line-height: 1.6;
-    text-align: left;
+    transition: all 0.4s ease;
 }
 
 .faq-item.active .faq-answer {
-    padding: 20px 24px;
+    padding: 20px;
     max-height: 200px;
 }
 
-/* Адаптивність */
-@media (max-width: 768px) {
-    .faq-section h2 {
-        font-size: 1.8rem;
-    }
-    .faq-question {
-        font-size: 1rem;
-        padding: 16px 20px;
-    }
-    .faq-answer {
-        font-size: 0.95rem;
-    }
+.faq-question:hover {
+    background: rgba(255, 255, 255, 0.15);
 }
 /* ========================================================================= */
 /* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW */
@@ -1754,6 +1724,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
 
 
 
