@@ -14,14 +14,27 @@
 </head>
 <body>
 
-    <header class="main-header">
-        <img src="assets/img/logo.png" alt="TICKET_2_LOVE" class="logo">
-        <nav class="main-nav">
-            <a href="catalogue.html">Каталог</a>
-            <button id="view-favorites" class="favorites-button cta-her">Обрані (0)</button>
-            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
-        </nav>
-    </header>
+    <!-- КОМПЛЕКСНЕ ВИПРАВЛЕННЯ: ХЕДЕР + МОБІЛЬНЕ МЕНЮ -->
+<header class="main-header" id="main-header">
+    <a href="index.html" class="logo-link">
+        <img src="assets/img/logo.png" alt="Логотип Ticket 2 Love" class="logo">
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label="Основна навігація">
+        <!-- Посилання адаптовані для всіх сторінок -->
+        <a href="index.html">Головна</a>
+        <a href="index.html#about">Про Нас</a>
+        <a href="catalogue.html">Каталог</a>
+        <button id="view-favorites" class="favorites-button cta-her">Обрані (0)</button>
+    </nav>
+
+    <!-- Одна кнопка гамбургера — без дублювання -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Відкрити меню" aria-controls="main-nav" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
 
     <main>
         <section id="profile-detail" class="profile-detail-section">
@@ -88,6 +101,7 @@
 <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
