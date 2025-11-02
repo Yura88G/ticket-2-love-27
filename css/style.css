@@ -454,11 +454,11 @@ body.menu-open {
 
 .selection-block {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    max-width: 600px;
+    gap: 20px; /* збільшено відстань між кнопками */
+    max-width: 500px;
     width: 100%;
     margin: 0 auto;
     opacity: 0;
@@ -469,8 +469,8 @@ body.menu-open {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 28px;
-    font-size: 1.1rem;
+    padding: 14px 24px;
+    font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 8px;
@@ -481,8 +481,8 @@ body.menu-open {
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
     min-height: 50px;
-    width: 100%;
-    max-width: 220px;
+    width: 200px; /* фіксована ширина для однаковості */
+    background: var(--color-accent-gradient);
 }
 
 .cta-button::before {
@@ -494,11 +494,6 @@ body.menu-open {
     height: 100%;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
     z-index: -1;
-}
-
-.cta-him,
-.cta-her {
-    background: var(--color-accent-gradient);
 }
 
 .cta-button::after {
@@ -522,8 +517,41 @@ body.menu-open {
 
 .cta-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(137, 11, 11, 0.3);
+    box-shadow: 0 12px 36px rgba(255, 255, 255, 0.2);
 }
+
+/* ========================================================================= */
+/* МОБІЛЬНА АДАПТАЦІЯ */
+/* ========================================================================= */
+@media (max-width: 480px) {
+    .selection-block {
+        flex-direction: column;
+        gap: 18px; /* збільшено відстань між кнопками */
+        padding: 0 20px;
+    }
+
+    .cta-button {
+        width: 100%;
+        max-width: 260px;
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+}
+
+/* ========================================================================= */
+/* Анімація появи */
+/* ========================================================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* ========================================================================= */
 /* МОБІЛЬНА АДАПТАЦІЯ — КНОПКИ ПО ЦЕНТРУ, ХЕДЕР НЕ ЗСУВАЄТЬСЯ */
@@ -1758,6 +1786,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
