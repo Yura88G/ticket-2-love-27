@@ -71,7 +71,7 @@ button, input, textarea, .main-nav a, .logo {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 15px 24px; /* Більше відступів з боків */
+    padding: 15px 32px; /* Більше відступів з боків */
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -103,7 +103,9 @@ button, input, textarea, .main-nav a, .logo {
 .main-nav {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 24px; /* Трохи більше між пунктами */
+    margin-left: auto;   /* Відштовхує від лівого краю */
+    margin-right: 20px;  /* Відступ від правого краю */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1752,6 +1754,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
 
 
 
