@@ -162,10 +162,11 @@ button, input, textarea, .main-nav a, .logo {
 @media (max-width: 768px) {
     /* Показуємо кнопку гамбургера */
     .nav-toggle {
-        display: block;
-        margin-left: auto; /* Відштовхує від лівого краю */
-        margin-right: 8px; /* Відступ від правого краю */
-    }
+    display: block;
+    margin-left: auto;
+    margin-right: 20px; /* Збільшено з 8px до 20px — чіткий відступ */
+    padding: 12px;     /* Додатковий "клік-зона" */
+}
 
     /* Меню виїжджає зправа — не штовхає контент */
     .main-nav {
@@ -1751,6 +1752,7 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
 
 
 
