@@ -161,7 +161,7 @@ button, input, textarea, .main-nav a, .logo {
     .main-nav {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: -100%; /* Виїжджає зправа */
         width: 280px;
         height: 100vh;
         background: rgba(21, 6, 6, 0.97);
@@ -172,29 +172,19 @@ button, input, textarea, .main-nav a, .logo {
         padding: 100px 20px 40px;
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
         transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 999;
     }
 
     .main-nav.is-open {
         right: 0;
     }
 
-    .main-nav a,
-    .main-nav button {
-        font-size: 1.1rem;
-        width: 100%;
-        text-align: center;
-        padding: 14px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .main-nav a:last-child,
-    .main-nav button {
-        border-bottom: none;
-    }
-
+    /* Кнопка гамбургера — відступ від краю */
     .nav-toggle {
-        display: block;
+        margin-left: auto;
+        margin-right: 8px;
     }
+}
 
     /* Фікс: фон не "стрибає" при відкритті меню */
     body.menu-open {
@@ -1742,5 +1732,6 @@ input[type="range"]::-moz-range-thumb {
     }
 }
 /* ==
+
 
 
