@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) {
                 e.preventDefault();
 
-                const headerHeight = 70; // 60px хедер + 10px запас
+                const headerHeight = 100;
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY;
                 const offsetPosition = targetPosition - headerHeight;
 
@@ -269,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
 
