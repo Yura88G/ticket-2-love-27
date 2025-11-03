@@ -445,6 +445,9 @@ body.menu-open {
 }
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
 /* ========================================================================= */
+/* ========================================================================= */
+/* SELECTION СЕКЦІЯ — КНОПКИ ПРАЦЮЮТЬ НА ДЕСКТОПІ + МОБІЛЦІ */
+/* ========================================================================= */
 .selection-section {
     padding: 60px 20px;
     background: transparent;
@@ -463,29 +466,37 @@ body.menu-open {
     width: 100%;
     margin: 0 auto;
     opacity: 0;
-    animation: fadeIn 0.6s ease-out 0.6s forwards; /* зменшено затримку */
+    animation: fadeIn 0.6s ease-out 3.2s forwards;
 }
 
 /* ========================================================================= */
-/* CTA-КНОПКА — WOW-ЕФЕКТИ, ПРАЦЮЄ НА <a> */
+/* CTA-КНОПКА — ПРАЦЮЄ НА <button>, WOW-ЕФЕКТИ */
 /* ========================================================================= */
 .cta-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  color: white;
-  background: linear-gradient(135deg, #ff6a88, #ff99ac);
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 2;
-  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: clamp(0.95rem, 1vw + 0.2rem, 1.05rem);
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: var(--color-text-white);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-brand);
+    backdrop-filter: blur(6px);
+    white-space: nowrap;
+    min-width: 160px;
+    max-width: 240px;
+    width: auto;
+    background: var(--color-accent-gradient);
+    text-align: center;
+    flex: 1 1 auto;
+    cursor: pointer;
+    outline: none;
 }
-
 
 .cta-button::before {
     content: "";
@@ -557,7 +568,6 @@ body.menu-open {
         transform: translateY(0);
     }
 }
-
 /* ========================================================================= */
 /* 5. МЕДІА-ЗАПИТИ (АДАПТАЦІЯ ДЛЯ ДЕСКТОПА - MOBILE FIRST) */
 /* ========================================================================= */
@@ -1786,6 +1796,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
