@@ -445,8 +445,10 @@ body.menu-open {
 }
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
 /* ========================================================================= */
-/* SELECTION СЕКЦІЯ — ГАРМОНІЙНІ КНОПКИ */
 /* ========================================================================= */
+/* SELECTION СЕКЦІЯ — ГАРМОНІЙНІ КНОПКИ (ОНОВЛЕНО) */
+/* ========================================================================= */
+
 .selection-section {
     padding: 60px 20px;
     background: transparent;
@@ -460,7 +462,7 @@ body.menu-open {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* збільшено відстань між кнопками */
+    gap: 20px; /* комфортна відстань між кнопками */
     max-width: 500px;
     width: 100%;
     margin: 0 auto;
@@ -468,12 +470,16 @@ body.menu-open {
     animation: fadeIn 0.6s ease-out 3.2s forwards;
 }
 
+/* ========================================================================= */
+/* CTA-КНОПКА — АДАПТИВНА, ГАРМОНІЙНА, WOW-ЕФЕКТИ */
+/* ========================================================================= */
+
 .cta-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 24px;
-    font-size: 1.05rem;
+    padding: 10px 20px; /* зменшено padding для елегантності */
+    font-size: clamp(0.95rem, 1vw + 0.2rem, 1.05rem); /* адаптивний розмір шрифту */
     font-weight: 600;
     text-decoration: none;
     border-radius: 8px;
@@ -483,9 +489,13 @@ body.menu-open {
     overflow: hidden;
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
-    min-height: 50px;
-    width: 200px; /* фіксована ширина для однаковості */
+    white-space: nowrap; /* запобігає переносу тексту */
+    min-width: 160px; /* мінімальна ширина для коротких текстів */
+    max-width: 240px; /* обмеження для довгих текстів */
+    width: auto; /* автоматична ширина по контенту */
     background: var(--color-accent-gradient);
+    text-align: center;
+    flex: 1 1 auto; /* дозволяє кнопкам займати однакову ширину */
 }
 
 .cta-button::before {
@@ -526,10 +536,11 @@ body.menu-open {
 /* ========================================================================= */
 /* МОБІЛЬНА АДАПТАЦІЯ */
 /* ========================================================================= */
+
 @media (max-width: 480px) {
     .selection-block {
         flex-direction: column;
-        gap: 18px; /* збільшено відстань між кнопками */
+        gap: 18px;
         padding: 0 20px;
     }
 
@@ -544,6 +555,7 @@ body.menu-open {
 /* ========================================================================= */
 /* Анімація появи */
 /* ========================================================================= */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -554,7 +566,6 @@ body.menu-open {
         transform: translateY(0);
     }
 }
-
 /* ========================================================================= */
 /* 5. МЕДІА-ЗАПИТИ (АДАПТАЦІЯ ДЛЯ ДЕСКТОПА - MOBILE FIRST) */
 /* ========================================================================= */
@@ -1771,6 +1782,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
