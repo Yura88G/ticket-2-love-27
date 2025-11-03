@@ -50,18 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href === '#' || href === '#!') return; // Пропускаємо порожні
+            if (href === '#' || href === '') return;
 
-            e.preventDefault();
             const target = document.querySelector(href);
-
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({
-                    behavior: 'smooth',
+                    поведение: 'smooth',
                     block: 'start'
                 });
 
-                // Закриваємо мобільне меню після кліку
+                // Закриваємо меню
                 if (mainNav && mainNav.classList.contains('is-open')) {
                     mainNav.classList.remove('is-open');
                     navToggle.setAttribute('aria-expanded', 'false');
@@ -265,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
 
