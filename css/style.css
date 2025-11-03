@@ -1417,14 +1417,19 @@ input[type="range"]::-moz-range-thumb {
     min-width: 300px;
 }
 
+#about {
+    padding-top: 80px; /* Відступ під хедер */
+    margin-top: -80px; /* Компенсація для скролу */
+    text-align: center;
+}
+
 .organizer-name {
-    font-family: var(--font-serif);
-    font-size: 2.5rem;
-    /* КОНТРАСТ: СВІТЛИЙ ТЕКСТ НА ТЕМНОМУ ФОНІ */
-    color: #FFFFFF; 
-    margin: 0 0 14px 0;
+    font-size: 2.2rem;
     font-weight: 700;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    text-align: center;
 }
 
 .organizer-slogan {
@@ -1782,6 +1787,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
