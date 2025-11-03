@@ -623,13 +623,20 @@ body.menu-open {
     text-align: center;
 }
 
-.steps-title {
-    font-family: var(--font-serif);
-    font-size: 2.4rem;
-    color: #FFD1DC;
-    margin-bottom: 50px;
-    position: relative;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+#faq,
+#how-it-works {
+    padding-top: 100px; /* БІЛЬШЕ ВІДСТУПУ */
+    margin-top: -100px;  /* КОМПЕНСАЦІЯ */
+    scroll-margin-top: 100px; /* ДЛЯ SMOOTH SCROLL */
+}
+
+.steps-title,
+.faq-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
 }
 
 .steps-title::after {
@@ -1787,6 +1794,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
