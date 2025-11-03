@@ -446,14 +446,17 @@ body.menu-open {
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
 /* ========================================================================= */
 /* ========================================================================= */
-/* SELECTION СЕКЦІЯ — КНОПКИ ПРАЦЮЮТЬ НА ДЕСКТОПІ + МОБІЛЦІ */
+/* SELECTION СЕКЦІЯ — КНОПКИ ПІДНЯТІ ВГОРУ, НЕ ЗАКРИТІ ХЕДЕРОМ */
 /* ========================================================================= */
 .selection-section {
-    padding: 60px 20px;
+    padding: 60px 20px 20px 20px; /* ЗМЕНШЕНО ВЕРХНІЙ ПАДІНГ */
+    margin-top: -80px; /* ПІДНЯТО ВГОРУ НА 80px */
     background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10; /* НАД ХЕДЕРОМ */
+    position: relative; /* ДЛЯ Z-INDEX */
 }
 
 .selection-block {
@@ -467,11 +470,13 @@ body.menu-open {
     margin: 0 auto;
     opacity: 0;
     animation: fadeIn 0.6s ease-out 3.2s forwards;
+    background: rgba(255, 255, 255, 0.1); /* ЛЕГКИЙ ФОН ДЛЯ ВИДИМОСТІ */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* ========================================================================= */
-/* CTA-КНОПКА — ПРАЦЮЄ НА <button>, WOW-ЕФЕКТИ */
-/* ========================================================================= */
+/* CTA-КНОПКА — WOW-ЕФЕКТИ */
 .cta-button {
     display: flex;
     justify-content: center;
@@ -537,10 +542,13 @@ body.menu-open {
     box-shadow: 0 12px 36px rgba(255, 255, 255, 0.2);
 }
 
-/* ========================================================================= */
 /* МОБІЛЬНА АДАПТАЦІЯ */
-/* ========================================================================= */
 @media (max-width: 480px) {
+    .selection-section {
+        margin-top: -60px; /* ПІДНЯТО НА МОБІЛЦІ */
+        padding: 40px 20px 20px 20px;
+    }
+
     .selection-block {
         flex-direction: column;
         gap: 18px;
@@ -555,9 +563,7 @@ body.menu-open {
     }
 }
 
-/* ========================================================================= */
 /* Анімація появи */
-/* ========================================================================= */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1796,6 +1802,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
