@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) {
                 e.preventDefault();
 
-                const headerHeight = 60; // Висота твого хедера
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                const headerHeight = 70; // 60px хедер + 10px запас
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY;
                 const offsetPosition = targetPosition - headerHeight;
 
                 window.scrollTo({
@@ -269,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
 
