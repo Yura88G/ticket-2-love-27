@@ -449,6 +449,9 @@ body.menu-open {
 /* SELECTION СЕКЦІЯ — ГАРМОНІЙНІ КНОПКИ (ОНОВЛЕНО) */
 /* ========================================================================= */
 
+/* ========================================================================= */
+/* SELECTION СЕКЦІЯ — КНОПКИ ПРАЦЮЮТЬ НА ДЕСКТОПІ + МОБІЛЦІ */
+/* ========================================================================= */
 .selection-section {
     padding: 60px 20px;
     background: transparent;
@@ -462,7 +465,7 @@ body.menu-open {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* комфортна відстань між кнопками */
+    gap: 20px;
     max-width: 500px;
     width: 100%;
     margin: 0 auto;
@@ -471,17 +474,16 @@ body.menu-open {
 }
 
 /* ========================================================================= */
-/* CTA-КНОПКА — АДАПТИВНА, ГАРМОНІЙНА, WOW-ЕФЕКТИ */
+/* CTA-КНОПКА — ПРАЦЮЄ НА <button>, WOW-ЕФЕКТИ */
 /* ========================================================================= */
-
 .cta-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px; /* зменшено padding для елегантності */
-    font-size: clamp(0.95rem, 1vw + 0.2rem, 1.05rem); /* адаптивний розмір шрифту */
+    padding: 10px 20px;
+    font-size: clamp(0.95rem, 1vw + 0.2rem, 1.05rem);
     font-weight: 600;
-    text-decoration: none;
+    border: none;
     border-radius: 8px;
     transition: all 0.3s ease;
     color: var(--color-text-white);
@@ -489,13 +491,15 @@ body.menu-open {
     overflow: hidden;
     box-shadow: var(--shadow-brand);
     backdrop-filter: blur(6px);
-    white-space: nowrap; /* запобігає переносу тексту */
-    min-width: 160px; /* мінімальна ширина для коротких текстів */
-    max-width: 240px; /* обмеження для довгих текстів */
-    width: auto; /* автоматична ширина по контенту */
+    white-space: nowrap;
+    min-width: 160px;
+    max-width: 240px;
+    width: auto;
     background: var(--color-accent-gradient);
     text-align: center;
-    flex: 1 1 auto; /* дозволяє кнопкам займати однакову ширину */
+    flex: 1 1 auto;
+    cursor: pointer;
+    outline: none;
 }
 
 .cta-button::before {
@@ -523,12 +527,16 @@ body.menu-open {
     z-index: 1;
 }
 
-.cta-button:hover::after {
+.cta-button:hover::after,
+.cta-button:focus::after,
+.cta-button:active::after {
     width: 150%;
     height: 150%;
 }
 
-.cta-button:hover {
+.cta-button:hover,
+.cta-button:focus,
+.cta-button:active {
     transform: scale(1.05);
     box-shadow: 0 12px 36px rgba(255, 255, 255, 0.2);
 }
@@ -536,7 +544,6 @@ body.menu-open {
 /* ========================================================================= */
 /* МОБІЛЬНА АДАПТАЦІЯ */
 /* ========================================================================= */
-
 @media (max-width: 480px) {
     .selection-block {
         flex-direction: column;
@@ -555,7 +562,6 @@ body.menu-open {
 /* ========================================================================= */
 /* Анімація появи */
 /* ========================================================================= */
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1794,6 +1800,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
