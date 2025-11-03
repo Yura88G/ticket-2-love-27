@@ -47,33 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // =========================================================================
     // 1.1.1 ПЛАВНИЙ СКРОЛ ДО СЕКЦІЙ ПРИ КЛІКУ НА МЕНЮ
     // =========================================================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href === '#' || href === '') return;
+   // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         ...
+//     });
+// });
 
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-
-                const headerHeight = 100;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = targetPosition - headerHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-
-                // Закриваємо меню
-                if (mainNav && mainNav.classList.contains('is-open')) {
-                    mainNav.classList.remove('is-open');
-                    navToggle.setAttribute('aria-expanded', 'false');
-                    body.classList.remove('menu-open');
-                }
-            }
-        });
-    });
     // =========================================================================
     // 2. ОНОВЛЕННЯ ЛІЧИЛЬНИКА ОБРАНИХ
     // =========================================================================
@@ -269,6 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
 
