@@ -446,18 +446,18 @@ body.menu-open {
 /* 4.1 кнопки на каталог SELECTION СЕКЦІЯ */
 .selection-section {
     padding: 60px 20px;
-    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: transparent;
 }
 
 .selection-block {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* збільшено відстань між кнопками */
+    gap: 20px;
     max-width: 500px;
     width: 100%;
     margin: 0 auto;
@@ -469,77 +469,65 @@ body.menu-open {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 14px 24px;
-    font-size: 1.05rem;
+    padding: 16px 24px;
+    font-size: 1.15rem;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    transition: all 0.4s ease;
     color: var(--color-text-white);
     position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-brand);
-    backdrop-filter: blur(6px);
-    min-height: 50px;
-    width: 200px; /* фіксована ширина для однаковості */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
     background: var(--color-accent-gradient);
+    width: 100%;
+    max-width: 220px;
+    min-height: 54px;
 }
 
 .cta-button::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    transform: rotate(45deg);
+    transition: opacity 0.4s ease;
     z-index: -1;
 }
 
-.cta-button::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-    z-index: 1;
-}
-
-.cta-button:hover::after {
-    width: 150%;
-    height: 150%;
-}
-
 .cta-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 36px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.2);
+}
+
+.cta-button:hover::before {
+    opacity: 1;
 }
 
 /* ========================================================================= */
-/* МОБІЛЬНА АДАПТАЦІЯ */
+/* МОБІЛЬНА WOW-АДАПТАЦІЯ */
 /* ========================================================================= */
 @media (max-width: 480px) {
     .selection-block {
         flex-direction: column;
-        gap: 18px; /* збільшено відстань між кнопками */
+        gap: 24px;
         padding: 0 20px;
     }
 
     .cta-button {
-        width: 100%;
-        max-width: 260px;
-        font-size: 1rem;
-        padding: 12px 20px;
+        font-size: 1.2rem;
+        padding: 18px 26px;
+        max-width: 280px;
+        animation: glowPulse 2.5s infinite ease-in-out;
     }
 }
 
 /* ========================================================================= */
-/* Анімація появи */
+/* Анімації */
 /* ========================================================================= */
 @keyframes fadeIn {
     from {
@@ -552,21 +540,15 @@ body.menu-open {
     }
 }
 
-
-/* ========================================================================= */
-/* МОБІЛЬНА АДАПТАЦІЯ — КНОПКИ ПО ЦЕНТРУ, ХЕДЕР НЕ ЗСУВАЄТЬСЯ */
-/* ========================================================================= */
-@media (max-width: 480px) {
-    .selection-block {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding: 0 10px;
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
     }
-
-    .cta-button {
-        width: 100%;
-        max-width: 260px;
+    50% {
+        box-shadow: 0 0 24px rgba(255, 255, 255, 0.25);
+    }
+    100% {
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
     }
 }
 
@@ -1786,6 +1768,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
