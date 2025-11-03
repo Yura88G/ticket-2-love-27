@@ -55,9 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                target.scrollIntoView({
-                    поведение: 'smooth',
-                    block: 'start'
+
+                const headerHeight = 60; // Висота твого хедера
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - headerHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
 
                 // Закриваємо меню
@@ -264,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
 
