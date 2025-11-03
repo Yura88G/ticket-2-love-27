@@ -470,31 +470,22 @@ body.menu-open {
 /* CTA-КНОПКА — WOW-ЕФЕКТИ, ПРАЦЮЄ НА <a> */
 /* ========================================================================= */
 .cta-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    font-size: clamp(0.95rem, 1vw + 0.2rem, 1.05rem);
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    color: var(--color-text-white);
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-brand);
-    backdrop-filter: blur(6px);
-    white-space: nowrap;
-    min-width: 160px;
-    max-width: 240px;
-    width: auto;
-    background: var(--color-accent-gradient);
-    text-align: center;
-    flex: 1 1 auto;
-    cursor: pointer;
-    z-index: 2;
-    pointer-events: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #ff6a88, #ff99ac);
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+  position: relative;
 }
+
 
 .cta-button::before {
     content: "";
@@ -1795,6 +1786,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
