@@ -1364,7 +1364,7 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 .organizer-title {
     font-family: var(--font-serif); 
-    font-size: 3.8rem; 
+    font-size: 2.5rem; 
     font-weight: 700;
     text-align: center;
     /* Відступ 40px між заголовком та карткою */
@@ -1603,7 +1603,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .faq-section h2 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin-bottom: 40px;
     color: #fff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
@@ -1838,6 +1838,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
