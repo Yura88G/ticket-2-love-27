@@ -1462,7 +1462,7 @@ input[type="range"]::-moz-range-thumb {
 /* ЗМІНА ТЕГУ: БУВ h2, СТАВ p, АЛЕ СТИЛІ ЗБЕРЕЖЕНІ */
 .organizer-name {
     font-family: var(--font-serif);
-    font-size: 2.5rem; /* Повернуто до 2.5rem для візуальної ваги імені */
+    font-size: 2rem; /* Повернуто до 2.5rem для візуальної ваги імені */
     font-weight: 700;
     color: #FFFFFF;
     text-shadow: 0 1px 3px rgba(0,0,0,0.4); /* М'якша тінь */
@@ -1837,6 +1837,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
