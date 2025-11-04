@@ -708,7 +708,7 @@ body.menu-open {
     width: 60px;
     height: 60px;
     margin: 0 auto 20px;
-    color: #FFD1DC;
+    color: #B88470;
     stroke-width: 1.8;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
     transition: transform 0.3s ease;
@@ -1837,6 +1837,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
