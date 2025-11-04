@@ -230,7 +230,12 @@ body.menu-open {
 /* 4. HERO СЕКЦІЯ (ОНОВЛЕНО) */
 /* 4. HERO СЕКЦІЯ (ОНОВЛЕНО + ОПТИМАЛЬНИЙ БАЛАНС) */
 /* ========================================================================= */
-
+.hero-logo-intro.hidden-immediately {
+    /* Цей клас миттєво приховує інтро-контейнер, якщо його викликано JS */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: -1 !important;
+}
 /* FULLSCREEN INTRO (КОНТЕЙНЕР) */
 .hero-logo-intro {
     position: fixed;
@@ -1837,6 +1842,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
