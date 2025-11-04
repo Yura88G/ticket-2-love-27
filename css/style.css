@@ -325,13 +325,13 @@ body.menu-open {
 .hero-title.animate-in {
     /* /* Зміна: Затримка 1.7s (було 1.8s) - Накладання на зникнення логотипу */
  */
-    animation: slideUp 0.6s ease-out 1.7s forwards; 
+    animation: slideUp 0.8s ease-out 1.7s forwards; 
 }
 
 /* Підзаголовок - плавно підтягується */
 .hero-subtitle.animate-in {
     /* Зміна: Затримка 2.3s (було 2.4s) */
-    animation: slideUp 0.6s ease-out 2.3s forwards; 
+    animation: slideUp 0.6s ease-out 2.1s forwards; 
 }
 
 /* Keyframes для обох заголовків (Підтягування знизу) */
@@ -1837,6 +1837,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
