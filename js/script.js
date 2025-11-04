@@ -1,6 +1,33 @@
 // script.js — ПОВНА ВЕРСІЯ, ВИПРАВЛЕНА, БЕЗ ПОМИЛОК
 document.addEventListener('DOMContentLoaded', () => {
+// 0. ЛОГІКА текст логотипа ІНТРО-АНІМАЦІЇ
+    // =========================================================================
+    const introElement = document.querySelector('.hero-logo-intro');
+    const introPlayed = sessionStorage.getItem('introPlayed');
 
+    if (introElement) {
+        if (!introPlayed) {
+            // СЦЕНАРІЙ 1: ПЕРШЕ ВІДВІДУВАННЯ СЕКЦІЇ
+            sessionStorage.setItem('introPlayed', 'true');
+            // Анімація Typewriter відпрацює згідно CSS
+        } else {
+            // СЦЕНАРІЙ 2: ПОВТОРНЕ ВІДВІДУВАННЯ (в тій же сесії)
+            introElement.classList.add('hidden-immediately');
+            
+            // Миттєво запускаємо анімацію появи заголовків, 
+            // оскільки CSS-затримки більше не працюють
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+
+            if (heroTitle) {
+                // Використовуємо клас, який змушує заголовки з'явитися миттєво
+                heroTitle.classList.add('animate-in'); 
+            }
+            if (heroSubtitle) {
+                heroSubtitle.classList.add('animate-in');
+            }
+        }
+    }
     // =========================================================================
     // 1. МОБІЛЬНЕ МЕНЮ — ПРАЦЮЄ З id="nav-toggle" і id="main-nav"
     // =========================================================================
@@ -273,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateFavoritesCounter();
 
 }); // ← ЦЕЙ ЗАКРИВАЮЧИЙ ЕЛЕМЕНТ БУВ ВТРАЧЕНИЙ!
+
 
 
 
