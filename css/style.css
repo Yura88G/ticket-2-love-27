@@ -1354,9 +1354,35 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 .organizer-section {
     max-width: 1000px;
-    margin: 140px auto;
+    /* ЗБІЛЬШУЄМО ВЕРХНІЙ МАРГІН, щоб звільнити місце для нового заголовка */
+    margin: 100px auto 140px auto; 
     padding: 0 15px;
 }
+
+/* ======================================== */
+/* НОВИЙ ЗАГОЛОВОК СЕКЦІЇ "ОРГАНІЗАТОР" (ЗОЛОТИЙ ГРАДІЄНТ) */
+/* ======================================== */
+.organizer-title {
+    font-family: var(--font-serif); 
+    font-size: 3.8rem; 
+    font-weight: 700;
+    text-align: center;
+    /* Відступ 40px між заголовком та карткою */
+    margin: 0 auto 40px auto; 
+    max-width: 900px;
+    
+    /* СТИЛЬ: ЗОЛОТИЙ ГРАДІЄНТ (ПРЕМІАЛЬНЕ ЗОЛОТО) */
+    background: linear-gradient(45deg, #FDD8AA, #B8860B, #FFD700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* ЕФЕКТ: М'ЯКЕ ТЕПЛЕ СВІТІННЯ */
+    text-shadow: 0 0 16px rgba(253, 216, 170, 0.4); 
+    
+    display: block; 
+}
+
 
 .organizer-container {
     /* ТЕМНИЙ ТРИКОЛІРНИЙ ГРАДІЄНТ (ІСКРИСТИЙ КОНЬЯК) */
@@ -1378,6 +1404,8 @@ input[type="range"]::-moz-range-thumb {
         0 0 32px rgba(253, 216, 170, 0.25); /* Мерехтіння */
     position: relative;
     overflow: hidden;
+    /* Прибираємо margin-top, оскільки його тепер регулює заголовок */
+    margin-top: 0; 
 }
 
 /* МЕРЕХТЛИВИЙ ЕФЕКТ "ОКСАМИТ" */
@@ -1432,19 +1460,15 @@ input[type="range"]::-moz-range-thumb {
     min-width: 300px;
 }
 
-#about {
-    padding-top: 80px; /* Відступ під хедер */
-    margin-top: -80px; /* Компенсація для скролу */
-    text-align: center;
-}
-
+/* ЗМІНА ТЕГУ: БУВ h2, СТАВ p, АЛЕ СТИЛІ ЗБЕРЕЖЕНІ */
 .organizer-name {
-    font-size: 2.2rem;
+    font-family: var(--font-serif);
+    font-size: 2.5rem; /* Повернуто до 2.5rem для візуальної ваги імені */
     font-weight: 700;
     color: #FFFFFF;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin: 20px 0;
-    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4); /* М'якша тінь */
+    margin: 0 0 14px 0; /* Коригування маржину */
+    text-align: left; /* Коригування вирівнювання */
 }
 
 .organizer-slogan {
@@ -1500,6 +1524,12 @@ input[type="range"]::-moz-range-thumb {
 /* АДАПТИВНІСТЬ */
 /* ======================================== */
 @media (max-width: 768px) {
+    
+    .organizer-title {
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    
     .organizer-header {
         flex-direction: column;
         text-align: center;
@@ -1527,12 +1557,18 @@ input[type="range"]::-moz-range-thumb {
     
     .organizer-container {
         padding: 52px 36px;
-        margin: 100px 15px;
+        margin-top: 40px; /* Відступ від заголовка на мобільному */
+        margin-bottom: 100px;
         border-radius: 28px;
     }
 }
 
 @media (max-width: 480px) {
+    .organizer-title {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+    
     .organizer-name {
         font-size: 2rem;
     }
@@ -1802,6 +1838,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
