@@ -1364,10 +1364,9 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 .organizer-title {
     font-family: var(--font-serif); 
-    font-size: 2.5rem; 
+    font-size: 2.4rem; 
     font-weight: 700;
     text-align: center;
-    /* Відступ 40px між заголовком та карткою */
     margin: 0 auto 40px auto; 
     max-width: 900px;
     
@@ -1377,8 +1376,8 @@ input[type="range"]::-moz-range-thumb {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     
-    /* ЕФЕКТ: М'ЯКЕ ТЕПЛЕ СВІТІННЯ */
-    text-shadow: 0 0 16px rgba(253, 216, 170, 0.4); 
+    /* ЗМІНЕНО: ЧІТКА ТІНЬ ДЛЯ ГЛИБИНИ, БЕЗ РОЗМИВАННЯ */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
     
     display: block; 
 }
@@ -1838,6 +1837,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
