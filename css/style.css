@@ -1646,7 +1646,7 @@ input[type="range"]::-moz-range-thumb {
 /* FAQ-ЕЛЕМЕНТ: САПФІРОВА ГАММА */
 .faq-item {
     /* ЗМІНЕНО: Прозорий Сапфір */
-    background: rgba(0, 5, 20, 0.85);
+    background: rgba(0, 5, 20, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     margin-bottom: 16px;
@@ -1701,13 +1701,13 @@ input[type="range"]::-moz-range-thumb {
     padding: 20px;
     max-height: 200px;
     /* ЗМІНЕНО: Темніший сапфіровий фон для відповіді */
-    background: rgba(0, 15, 60, 0.5); 
+    background: rgba(0, 5, 20, 0.8); 
 }
 
 /* ЕФЕКТ HOVER */
 .faq-question:hover {
     /* ЗМІНЕНО: Темно-синій Hover */
-    background: rgba(10, 30, 80, 0.9);
+    background: rgba(10, 30, 80, 0.7);
 }
 
 /* ========================================================================= */
@@ -1903,6 +1903,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
