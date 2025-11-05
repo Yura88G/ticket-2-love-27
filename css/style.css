@@ -677,9 +677,9 @@ body.menu-open {
 .step-card {
     background: linear-gradient(
         135deg,
-        rgba(0, 15, 60, 0.7),      /* Глибокий, прозорий Сапфір */
-        rgba(0, 50, 120, 0.5),     /* Прозорий Індиго */
-        rgba(255, 255, 255, 0.1)   /* Дуже легке, холодне світіння */
+        rgba(0, 5, 20, 0.65),      /* Світліше */
+        rgba(10, 30, 80, 0.55),     /* Світліше */
+        rgba(255, 255, 255, 0.1)   
     );
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -1409,14 +1409,12 @@ input[type="range"]::-moz-range-thumb {
     display: block; 
 }
 
-
-
 .organizer-container {
     background: linear-gradient(
         135deg,
-        rgba(0, 5, 20, 0.85),      
-        rgba(10, 30, 80, 0.75),  
-        rgba(170, 216, 253, 0.35) 
+        rgba(0, 5, 20, 0.75),      /* Темніше за "Три Кроки" */
+        rgba(10, 30, 80, 0.65),     /* Темніше за "Три Кроки" */
+        rgba(255, 223, 0, 0.2)       
     );
     
     /* BLUEMORPHISM */
@@ -1648,7 +1646,7 @@ input[type="range"]::-moz-range-thumb {
 /* FAQ-ЕЛЕМЕНТ: САПФІРОВА ГАММА */
 .faq-item {
     /* ЗМІНЕНО: Прозорий Сапфір */
-    background: rgba(0, 15, 60, 0.7);
+    background: rgba(0, 5, 20, 0.85);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     margin-bottom: 16px;
@@ -1682,7 +1680,7 @@ input[type="range"]::-moz-range-thumb {
 /* ЗМІНЕНО: Активний елемент стає ЗОЛОТИМ */
 .faq-item.active .faq-question {
     color: #FFD700;
-    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 5px rgba(0, 5, 20, 0.95);
 }
 
 .faq-item.active .faq-question::after {
@@ -1709,18 +1707,17 @@ input[type="range"]::-moz-range-thumb {
 /* ЕФЕКТ HOVER */
 .faq-question:hover {
     /* ЗМІНЕНО: Темно-синій Hover */
-    background: rgba(0, 50, 120, 0.7);
+    background: rgba(10, 30, 80, 0.9);
 }
 
 /* ========================================================================= */
 /* 14. ФУТЕР 2025 - САПФІР/ЗОЛОТО/СРІБЛО (ФІНАЛЬНИЙ КОНТРАСТ) */
 /* ========================================================================= */
 .footer-section {
-    /* ФОН: ГЛИБОКИЙ САПФІР (МАЙЖЕ ЧОРНИЙ) */
     background: linear-gradient(
         135deg, 
-        rgba(0, 5, 20, 0.95) 0%,     /* Дуже темний сапфір */
-        rgba(0, 15, 60, 0.98) 50%,   /* Насичений сапфір */
+        rgba(0, 5, 20, 0.95) 0%,     /* Майже непрозорий */
+        rgba(10, 30, 80, 0.85) 50%,  /* Майже непрозорий */
         rgba(0, 5, 20, 0.95) 100%
     );
     
@@ -1906,6 +1903,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
