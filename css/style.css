@@ -1355,11 +1355,11 @@ input[type="range"]::-moz-range-thumb {
 /* 11. БЛОК "ПРО НАС" - ЧИСТИЙ + ТРЕНДОВИЙ 2025 */
 /* ========================================================================= */
 /* ======================================== */
-/* ОРГАНІЗАТОР — ФІНАЛЬНИЙ ТЕМНИЙ BLUEMORPHISM "ІСКРИСТИЙ КОНЬЯК" */
+/* ======================================== */
+/* 13. ОРГАНІЗАТОР — ФІНАЛЬНИЙ СТРИМАНИЙ BLUEMORPHISM "РУБІН" */
 /* ======================================== */
 .organizer-section {
     max-width: 1000px;
-    /* ЗБІЛЬШУЄМО ВЕРХНІЙ МАРГІН, щоб звільнити місце для нового заголовка */
     margin: 100px auto 140px auto; 
     padding: 0 15px;
 }
@@ -1369,7 +1369,8 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 .organizer-title {
     font-family: var(--font-serif); 
-    font-size: 2.4rem; 
+    /* ЗМІНЕНО: Оптимальний розмір H2 для ієрархії */
+    font-size: 2.8rem; 
     font-weight: 700;
     text-align: center;
     margin: 0 auto 40px auto; 
@@ -1381,7 +1382,7 @@ input[type="range"]::-moz-range-thumb {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     
-    /* ЗМІНЕНО: ЧІТКА ТІНЬ ДЛЯ ГЛИБИНИ, БЕЗ РОЗМИВАННЯ */
+    /* ЧІТКА ТІНЬ ДЛЯ ГЛИБИНИ */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
     
     display: block; 
@@ -1389,26 +1390,26 @@ input[type="range"]::-moz-range-thumb {
 
 
 .organizer-container {
-    /* ТЕМНИЙ ТРИКОЛІРНИЙ ГРАДІЄНТ (ІСКРИСТИЙ КОНЬЯК) */
+    /* ЗМІНЕНО: ІНТЕГРАЦІЯ З ФОНОМ САЙТУ #570009 (БОРДОВИЙ/РУБІН) */
     background: linear-gradient(
         135deg,
-        rgba(45, 10, 5, 0.85),     /* Глибокий Коричневий Шоколад (Основа) */
-        rgba(180, 80, 20, 0.75),    /* Палений Амбер (Тепло/Глибина) */
-        rgba(253, 216, 170, 0.45)   /* Приглушений Золотий (Світіння) */
+        rgba(0, 0, 0, 0.5),          /* Глибока Чорна Тінь (Основа) */
+        rgba(87, 0, 9, 0.7),         /* Бордовий в тон сайту */
+        rgba(255, 223, 0, 0.2)       /* Дуже приглушене Золоте Світіння */
     );
     
     /* BLUEMORPHISM */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     
     border-radius: 32px;
     padding: 68px 56px;
+    /* ЗМЕНШЕНО ТІНІ ТА МЕРЕХТІННЯ ДЛЯ ЗНИЖЕННЯ ВІЗУАЛЬНОГО АКЦЕНТУ */
     box-shadow: 
-        0 20px 60px rgba(0, 0, 0, 0.5), /* Глибина */
-        0 0 32px rgba(253, 216, 170, 0.25); /* Мерехтіння */
+        0 12px 30px rgba(0, 0, 0, 0.5), /* Глибина */
+        0 0 16px rgba(255, 223, 0, 0.15); /* Мерехтіння (дуже приглушене) */
     position: relative;
     overflow: hidden;
-    /* Прибираємо margin-top, оскільки його тепер регулює заголовок */
     margin-top: 0; 
 }
 
@@ -1418,7 +1419,8 @@ input[type="range"]::-moz-range-thumb {
     position: absolute;
     top: -60%; left: -60%;
     width: 220%; height: 220%;
-    background: radial-gradient(circle, rgba(253, 216, 170, 0.12) 0%, transparent 65%); /* Неонове Золото */
+    /* ЗМЕНШЕНА НЕПРОЗОРІСТЬ ДЛЯ ЗНИЖЕННЯ АКЦЕНТУ */
+    background: radial-gradient(circle, rgba(253, 216, 170, 0.08) 0%, transparent 65%); 
     animation: velvet-shine 10s ease-in-out infinite;
     pointer-events: none;
 }
@@ -1449,7 +1451,7 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 30px;
     /* ОБІДОК ФОТО - НЕОНОВЕ ЗОЛОТО */
     border: 2.5px solid #FDD8AA; 
-    box-shadow: 0 12px 36px rgba(253, 216, 170, 0.35); /* Відблиск */
+    box-shadow: 0 12px 36px rgba(253, 216, 170, 0.35); 
     transition: all 0.5s ease;
 }
 
@@ -1467,12 +1469,12 @@ input[type="range"]::-moz-range-thumb {
 /* ЗМІНА ТЕГУ: БУВ h2, СТАВ p, АЛЕ СТИЛІ ЗБЕРЕЖЕНІ */
 .organizer-name {
     font-family: var(--font-serif);
-    font-size: 2rem; /* Повернуто до 2.5rem для візуальної ваги імені */
+    font-size: 2rem; 
     font-weight: 700;
     color: #FFFFFF;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.4); /* М'якша тінь */
-    margin: 0 0 14px 0; /* Коригування маржину */
-    text-align: left; /* Коригування вирівнювання */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4); 
+    margin: 0 0 14px 0; 
+    text-align: left; 
 }
 
 .organizer-slogan {
@@ -1490,7 +1492,7 @@ input[type="range"]::-moz-range-thumb {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 44px; /* МАКСИМАЛЬНЕ "ПОВІТРЯ" */
+    gap: 44px; 
     margin-top: 36px;
 }
 
@@ -1530,7 +1532,8 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 768px) {
     
     .organizer-title {
-        font-size: 3rem;
+        /* ЗМІНЕНО: Скоригований розмір для мобільного */
+        font-size: 2.5rem; 
         margin-bottom: 30px;
     }
     
@@ -1561,7 +1564,7 @@ input[type="range"]::-moz-range-thumb {
     
     .organizer-container {
         padding: 52px 36px;
-        margin-top: 40px; /* Відступ від заголовка на мобільному */
+        margin-top: 40px; 
         margin-bottom: 100px;
         border-radius: 28px;
     }
@@ -1569,7 +1572,7 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 480px) {
     .organizer-title {
-        font-size: 2.2rem;
+        font-size: 2rem;
         margin-bottom: 20px;
     }
     
@@ -1588,8 +1591,8 @@ input[type="range"]::-moz-range-thumb {
     .services-grid {
         gap: 36px;
     }
-}
-/* ========================================================================= */
+        }
+
 
 /* ======================================== */
 /* 3.1. FAQ — Часті питання */
@@ -1842,6 +1845,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
