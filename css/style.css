@@ -624,27 +624,13 @@ body.menu-open {
         padding: 10px 15px; /* Менше відступів */
     }
 }
-/* ========================================================================= */
-/* 6. СЕКЦІЯ "ЯК ЦЕ ПРАЦЮЄ" (HOW IT WORKS) */
-/* ======================================== */
-/* БЛОК: ТРИ КРОКИ ДО ЗУСТРІЧІ — GLASSMORPHISM */
-/* ======================================== */
-.steps-section {
-    max-width: 1100px;
-    margin: 100px auto;
-    padding: 0 15px;
-    text-align: center;
-}
 
-#faq,
-#how-it-works {
-    padding-top: 100px; /* БІЛЬШЕ ВІДСТУПУ */
-    margin-top: -100px;  /* КОМПЕНСАЦІЯ */
-    scroll-margin-top: 100px; /* ДЛЯ SMOOTH SCROLL */
-}
+/* ======================================== */
+/* 6. БЛОК: ТРИ КРОКИ ДО ЗУСТРІЧІ — GLASSMORPHISM */
+/* ======================================== */
 
-.steps-title,
-.faq-section h2 {
+    /* ЗАГОЛОВОК СЕКЦІЇ ТА ЛІНІЯ (ЗОЛОТИЙ АКЦЕНТ) */
+.steps-title {
     font-size: 2rem;
     text-align: center;
     color: #FFFFFF;
@@ -657,120 +643,43 @@ body.menu-open {
     display: block;
     width: 80px;
     height: 3px;
-    background: linear-gradient(90deg, #FFD1DC, #C0985A);
+    /* ЗМІНЕНО: Золотий градієнт */
+    background: linear-gradient(90deg, #FDD8AA, #B8860B);
     margin: 20px auto 0;
     border-radius: 2px;
 }
 
-.steps-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
-}
-
-/* GLASSMORPHISM КАРТКА */
-/* GLASSMORPHISM КАРТКА — САПФІРОВА ГАММА */
-.step-card {
-    background: linear-gradient(
-        135deg,
-        rgba(0, 15, 60, 0.4),      /* Глибокий, прозорий Сапфір */
-        rgba(0, 50, 120, 0.25),     /* Прозорий Індиго */
-        rgba(255, 255, 255, 0.1)   /* Дуже легке, холодне світіння */
-    );
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-radius: 20px;
-    padding: 32px 24px;
-    
-    /* Сріблястий/Холодний обідок */
-    border: 1px solid rgba(170, 216, 253, 0.35); 
-    
-    /* Тінь/Світіння тепер СРІБЛЯСТЕ */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-
-.step-card:hover::before {
-    opacity: 1;
-}
-
-.step-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    box-shadow: 0 16px 40px rgba(192, 152, 90, 0.2);
-    border-color: rgba(255, 209, 220, 0.4);
-}
-
+/* ІКОНКИ КРОКІВ (ЗОЛОТИЙ АКЦЕНТ) */
 .step-icon {
     width: 60px;
     height: 60px;
     margin: 0 auto 20px;
-    color: #B88470;
+    /* ЗМІНЕНО: Золотий колір для візуальної ваги */
+    color: #FFD700; 
     stroke-width: 1.8;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
     transition: transform 0.3s ease;
 }
 
-.step-card:hover .step-icon {
-    transform: scale(1.15) rotate(5deg);
+
+/* ЕФЕКТ HOVER (СРІБЛЯСТИЙ/ХОЛОДНИЙ) */
+.step-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    /* ЗМІНЕНО: Сріблясте світіння на hover */
+    box-shadow: 0 16px 40px rgba(170, 216, 253, 0.2); 
+    /* ЗМІНЕНО: Сріблястий обідок на hover */
+    border-color: rgba(170, 216, 253, 0.6);
 }
 
-.step-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #FFFFFF;
-    margin-bottom: 12px;
-    font-family: 'Inter', sans-serif;
-}
 
-.step-text {
-    font-size: 1rem;
-    color: #f0f0f0;
-    line-height: 1.7;
-    font-family: 'Inter', sans-serif;
-}
-
+/* АКЦЕНТНИЙ ТЕКСТ (ЗОЛОТИЙ АКЦЕНТ) */
 .accent {
-    color: #FFD1DC;
+    /* ЗМІНЕНО: Золотий колір */
+    color: #FFD700; 
     font-weight: 600;
     text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
-/* ======================================== */
-/* АДАПТИВНІСТЬ */
-/* ======================================== */
-@media (max-width: 992px) {
-    .steps-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .steps-title {
-        font-size: 2rem;
-    }
-    
-    .step-card {
-        padding: 28px 20px;
-    }
-}
-
-@media (max-width: 576px) {
-    .steps-title {
-        font-size: 1.8rem;
-    }
-    
-    .step-card {
-        padding: 24px 16px;
-    }
-    
-    .step-icon {
-        width: 50px;
-        height: 50px;
-    }
-}
 
 /* ========================================================================= */
 /* 7. АНІМАЦІЯ FADE-IN (СТИЛЬ VDCOM + ПЛАВНІСТЬ) */
@@ -1848,6 +1757,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
