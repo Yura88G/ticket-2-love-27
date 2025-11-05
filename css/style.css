@@ -1703,13 +1703,13 @@ input[type="range"]::-moz-range-thumb {
     padding: 20px;
     max-height: 200px;
     /* ЗМІНЕНО: Темніший сапфіровий фон для відповіді */
-    background: rgba(0, 15, 60, 0.6); 
+    background: rgba(0, 15, 60, 0.9); 
 }
 
 /* ЕФЕКТ HOVER */
 .faq-question:hover {
     /* ЗМІНЕНО: Темно-синій Hover */
-    background: rgba(0, 50, 120, 0.6);
+    background: rgba(0, 50, 120, 0.8);
 }
 
 /* ========================================================================= */
@@ -1889,6 +1889,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
