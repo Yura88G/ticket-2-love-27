@@ -1622,6 +1622,10 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 /* ФІКС: FAQ ВИДИМИЙ НАЗАВЖДИ */
 /* ======================================== */
+/* ========================================================================= */
+/* БЛОК: ЧАСТІ ПИТАННЯ (САПФІРОВИЙ GLASSMORPHISM) */
+/* ========================================================================= */
+/* ФІКС: FAQ ВИДИМИЙ НАЗАВЖДИ */
 .faq-section {
     opacity: 1 !important;
     visibility: visible !important;
@@ -1633,20 +1637,26 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .faq-section h2 {
-    font-size: 2rem;
+    /* Для заголовка секції використовуємо узгоджений розмір 2.8rem (якщо це H2) */
+    font-size: 2.8rem; 
     margin-bottom: 40px;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    /* Тінь для глибини */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* FAQ-ЕЛЕМЕНТ: САПФІРОВА ГАММА */
 .faq-item {
-    background: rgba(255, 255, 255, 0.08);
+    /* ЗМІНЕНО: Прозорий Сапфір */
+    background: rgba(0, 15, 60, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     margin-bottom: 16px;
     overflow: hidden;
     transition: all 0.4s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    /* Сріблястий обідок */
+    border: 1px solid rgba(170, 216, 253, 0.2);
 }
 
 .faq-question {
@@ -1669,6 +1679,12 @@ input[type="range"]::-moz-range-thumb {
     transition: transform 0.3s ease;
 }
 
+/* ЗМІНЕНО: Активний елемент стає ЗОЛОТИМ */
+.faq-item.active .faq-question {
+    color: #FFD700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
 .faq-item.active .faq-question::after {
     content: '−';
 }
@@ -1686,11 +1702,16 @@ input[type="range"]::-moz-range-thumb {
 .faq-item.active .faq-answer {
     padding: 20px;
     max-height: 200px;
+    /* ЗМІНЕНО: Темніший сапфіровий фон для відповіді */
+    background: rgba(0, 15, 60, 0.6); 
 }
 
+/* ЕФЕКТ HOVER */
 .faq-question:hover {
-    background: rgba(255, 255, 255, 0.15);
+    /* ЗМІНЕНО: Темно-синій Hover */
+    background: rgba(0, 50, 120, 0.6);
 }
+
 /* ========================================================================= */
 /* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW */
 /* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW (ФІНАЛЬНИЙ ШОКОЛАД/ЗОЛОТО) */
@@ -1868,6 +1889,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
