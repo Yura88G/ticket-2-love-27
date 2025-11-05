@@ -670,34 +670,29 @@ body.menu-open {
 }
 
 /* GLASSMORPHISM КАРТКА */
+/* GLASSMORPHISM КАРТКА — САПФІРОВА ГАММА */
 .step-card {
     background: linear-gradient(
         135deg,
-        rgba(137, 11, 11, 0.3),
-        rgba(75, 0, 130, 0.3),
-        rgba(44, 46, 90, 0.3)
+        rgba(0, 15, 60, 0.4),      /* Глибокий, прозорий Сапфір */
+        rgba(0, 50, 120, 0.25),     /* Прозорий Індиго */
+        rgba(255, 255, 255, 0.1)   /* Дуже легке, холодне світіння */
     );
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-radius: 20px;
     padding: 32px 24px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    
+    /* Сріблястий/Холодний обідок */
+    border: 1px solid rgba(170, 216, 253, 0.35); 
+    
+    /* Тінь/Світіння тепер СРІБЛЯСТЕ */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
 }
 
-.step-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-}
 
 .step-card:hover::before {
     opacity: 1;
@@ -1853,6 +1848,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
