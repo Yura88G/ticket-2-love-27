@@ -1369,24 +1369,31 @@ input[type="range"]::-moz-range-thumb {
 /* ======================================== */
 .organizer-title {
     font-family: var(--font-serif); 
-    /* ЗМІНЕНО: Оптимальний розмір H2 для ієрархії */
+    /* Розмір залишаємо правильним для ієрархії */
     font-size: 2.8rem; 
     font-weight: 700;
     text-align: center;
     margin: 0 auto 40px auto; 
     max-width: 900px;
     
-    /* СТИЛЬ: ЗОЛОТИЙ ГРАДІЄНТ (ПРЕМІАЛЬНЕ ЗОЛОТО) */
-    background: linear-gradient(45deg, #FDD8AA, #B8860B, #FFD700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    /* ЗМІНЕНО: СУЦІЛЬНИЙ КОЛІР замість градієнта для контрасту */
+    color: #FFD700; /* Яскраве, чисте Золото */
     
-    /* ЧІТКА ТІНЬ ДЛЯ ГЛИБИНИ */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+    /* Видаляємо background-clip та text-fill-color, оскільки колір суцільний */
+    
+    /* НОВЕ: ПОСИЛЕНА ТІНЬ для максимальної читабельності на бордовому фоні */
+    text-shadow: 
+        /* 1. Товстий темний контур */
+        -2px -2px 0 #000, 
+        2px -2px 0 #000, 
+        -2px 2px 0 #000, 
+        2px 2px 0 #000,
+        /* 2. М'яке золоте світіння (фінальний штрих) */
+        0 0 20px rgba(255, 223, 0, 0.6); 
     
     display: block; 
 }
+
 
 
 .organizer-container {
@@ -1845,6 +1852,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
