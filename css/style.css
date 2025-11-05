@@ -677,8 +677,8 @@ body.menu-open {
 .step-card {
     background: linear-gradient(
         135deg,
-        rgba(0, 15, 60, 0.4),      /* Глибокий, прозорий Сапфір */
-        rgba(0, 50, 120, 0.25),     /* Прозорий Індиго */
+        rgba(0, 15, 60, 0.7),      /* Глибокий, прозорий Сапфір */
+        rgba(0, 50, 120, 0.5),     /* Прозорий Індиго */
         rgba(255, 255, 255, 0.1)   /* Дуже легке, холодне світіння */
     );
     backdrop-filter: blur(14px);
@@ -1868,6 +1868,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
