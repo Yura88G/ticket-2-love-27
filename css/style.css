@@ -1713,16 +1713,15 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* ========================================================================= */
-/* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW */
-/* 14. ФУТЕР 2025 - GLASSMORPHISM + NEON GLOW (ФІНАЛЬНИЙ ШОКОЛАД/ЗОЛОТО) */
-/* ======================================== */
+/* 14. ФУТЕР 2025 - САПФІР/ЗОЛОТО/СРІБЛО (ФІНАЛЬНИЙ КОНТРАСТ) */
+/* ========================================================================= */
 .footer-section {
-    /* ФОН: ГЛИБОКИЙ КОРИЧНЕВИЙ ШОКОЛАД (З ЛЕГКОЮ ПРОЗОРІСТЮ) */
+    /* ФОН: ГЛИБОКИЙ САПФІР (МАЙЖЕ ЧОРНИЙ) */
     background: linear-gradient(
         135deg, 
-        rgba(21, 6, 6, 0.92) 0%,   /* #150606 з 92% непрозорості */
-        rgba(32, 10, 10, 0.95) 50%, /* #200a0a з 95% непрозорості */
-        rgba(21, 6, 6, 0.92) 100%
+        rgba(0, 5, 20, 0.95) 0%,     /* Дуже темний сапфір */
+        rgba(0, 15, 60, 0.98) 50%,   /* Насичений сапфір */
+        rgba(0, 5, 20, 0.95) 100%
     );
     
     color: #fff;
@@ -1738,8 +1737,8 @@ input[type="range"]::-moz-range-thumb {
     left: 0;
     right: 0;
     height: 1px;
-    /* НЕОНОВА ЛІНІЯ: ЗОЛОТО */
-    background: linear-gradient(90deg, transparent, rgba(253, 216, 170, 0.5), transparent);
+    /* ЛІНІЯ: СРІБЛЯСТЕ СЯЙВО (для гармонії з сапфіром) */
+    background: linear-gradient(90deg, transparent, rgba(170, 216, 253, 0.5), transparent);
 }
 
 .footer-content {
@@ -1756,7 +1755,7 @@ input[type="range"]::-moz-range-thumb {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     font-weight: 700;
-    /* ГРАДІЄНТ ЛОГОТИПУ: ЗОЛОТО-АМБЕР */
+    /* ГРАДІЄНТ ЛОГОТИПУ: ЗОЛОТО (АКЦЕНТ) */
     background: linear-gradient(45deg, #FDD8AA, #B8860B, #FFD700);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1791,8 +1790,11 @@ input[type="range"]::-moz-range-thumb {
     font-weight: 500;
     border-radius: 20px;
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
+    
+    /* ФОН КНОПКИ: ПРОЗОРИЙ САПФІР */
+    border: 1px solid rgba(170, 216, 253, 0.15);
+    background: rgba(0, 30, 80, 0.2); 
+    
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
@@ -1807,7 +1809,8 @@ input[type="range"]::-moz-range-thumb {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    /* СРІБЛЯСТИЙ БЛИСК НА HOVER */
+    background: linear-gradient(90deg, transparent, rgba(170, 216, 253, 0.2), transparent);
     transition: left 0.6s;
 }
 
@@ -1821,28 +1824,42 @@ input[type="range"]::-moz-range-thumb {
     flex-shrink: 0;
 }
 
+/* ЗАГАЛЬНИЙ HOVER ЕФЕКТ (ТРАНСФОРМОВАНО НА СРІБЛО) */
 .social-btn:hover {
-    /* HOVER ЕФЕКТ: ЗОЛОТЕ СЯЙВО */
-    border-color: rgba(253, 216, 170, 0.5); /* FDD8AA */ 
-    background: rgba(253, 216, 170, 0.08); 
+    border-color: rgba(170, 216, 253, 0.6); /* СРІБЛО */ 
+    background: rgba(170, 216, 253, 0.08); /* СРІБЛО */ 
     box-shadow: 
-        0 20px 40px rgba(253, 216, 170, 0.25),
-        0 0 0 1px rgba(253, 216, 170, 0.6);
+        0 20px 40px rgba(170, 216, 253, 0.25),
+        0 0 0 1px rgba(170, 216, 253, 0.6);
 }
 
-/* Кожна кнопка - підсилення золотого сяйва */
+/* ЗМІНА: Кнопки Instagram, Telegram та Phone (золоте сяйво) */
 .social-btn.instagram:hover,
 .social-btn.telegram:hover,
-.social-btn.tiktok:hover,
 .social-btn.phone:hover {
+    /* ЗОЛОТЕ СЯЙВО ПРИКЛАДАЄТЬСЯ ТІЛЬКИ ДО ЦИХ КНОПОК */
     box-shadow: 
         0 20px 40px rgba(253, 216, 170, 0.35),
         0 0 0 1px rgba(253, 216, 170, 0.6);
+    border-color: rgba(253, 216, 170, 0.6); /* ЗОЛОТО */ 
+    background: rgba(253, 216, 170, 0.08); /* ЗОЛОТО */ 
 }
+
+/* ЗМІНА: Кнопка TikTok (Сріблясте сяйво) */
+.social-btn.tiktok:hover {
+    /* СРІБЛЯСТЕ СЯЙВО - СПЕЦІАЛЬНО ЗАПИТАНА ЗМІНА */
+    box-shadow: 
+        0 20px 40px rgba(170, 216, 253, 0.35),
+        0 0 0 1px rgba(170, 216, 253, 0.6);
+    border-color: rgba(170, 216, 253, 0.6); 
+    background: rgba(170, 216, 253, 0.08); 
+}
+
+/* ВИДАЛЕНО: СТИЛІ ДЛЯ .social-btn.whatsapp */
 
 .footer-legal {
     padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Трохи товща лінія */
 }
 
 .footer-legal p {
@@ -1852,7 +1869,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .footer-legal a {
-    /* КОЛІР ПОСИЛАНЬ: ЗОЛОТО */
+    /* КОЛІР ПОСИЛАНЬ: ЗОЛОТО (АКЦЕНТ) */
     color: #FDD8AA; 
     text-decoration: none;
     transition: all 0.3s ease;
