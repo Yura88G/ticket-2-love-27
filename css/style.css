@@ -1648,7 +1648,7 @@ input[type="range"]::-moz-range-thumb {
 /* FAQ-ЕЛЕМЕНТ: САПФІРОВА ГАММА */
 .faq-item {
     /* ЗМІНЕНО: Прозорий Сапфір */
-    background: rgba(0, 15, 60, 0.4);
+    background: rgba(0, 15, 60, 0.7);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     margin-bottom: 16px;
@@ -1889,6 +1889,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
