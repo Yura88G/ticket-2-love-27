@@ -1397,12 +1397,11 @@ input[type="range"]::-moz-range-thumb {
 
 
 .organizer-container {
-    /* ЗМІНЕНО: ІНТЕГРАЦІЯ З ФОНОМ САЙТУ #570009 (БОРДОВИЙ/РУБІН) */
     background: linear-gradient(
         135deg,
-        rgba(0, 0, 0, 0.5),          /* Глибока Чорна Тінь (Основа) */
-        rgba(87, 0, 9, 0.7),         /* Бордовий в тон сайту */
-        rgba(255, 223, 0, 0.2)       /* Дуже приглушене Золоте Світіння */
+        rgba(0, 5, 20, 0.85),      
+        rgba(10, 30, 80, 0.75),  
+        rgba(170, 216, 253, 0.35) 
     );
     
     /* BLUEMORPHISM */
@@ -1411,26 +1410,28 @@ input[type="range"]::-moz-range-thumb {
     
     border-radius: 32px;
     padding: 68px 56px;
-    /* ЗМЕНШЕНО ТІНІ ТА МЕРЕХТІННЯ ДЛЯ ЗНИЖЕННЯ ВІЗУАЛЬНОГО АКЦЕНТУ */
+    
     box-shadow: 
-        0 12px 30px rgba(0, 0, 0, 0.5), /* Глибина */
-        0 0 16px rgba(255, 223, 0, 0.15); /* Мерехтіння (дуже приглушене) */
+        0 12px 30px rgba(0, 0, 0, 0.6), 
+        0 0 24px rgba(170, 216, 253, 0.25); /* Сріблястий ореол */
+    
+    border: 1.5px solid rgba(170, 216, 253, 0.6); 
+    
     position: relative;
     overflow: hidden;
     margin-top: 0; 
 }
 
-/* МЕРЕХТЛИВИЙ ЕФЕКТ "ОКСАМИТ" */
 .organizer-container::before {
     content: '';
     position: absolute;
     top: -60%; left: -60%;
     width: 220%; height: 220%;
-    /* ЗМЕНШЕНА НЕПРОЗОРІСТЬ ДЛЯ ЗНИЖЕННЯ АКЦЕНТУ */
-    background: radial-gradient(circle, rgba(253, 216, 170, 0.08) 0%, transparent 65%); 
+    background: radial-gradient(circle, rgba(170, 216, 253, 0.12) 0%, transparent 65%); 
     animation: velvet-shine 10s ease-in-out infinite;
     pointer-events: none;
 }
+
 
 @keyframes velvet-shine {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -1852,6 +1853,7 @@ input[type="range"]::-moz-range-thumb {
         font-size: 1rem;
     }
 }
+
 
 
 
